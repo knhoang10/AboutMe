@@ -19,3 +19,28 @@ export function ButtonStyle({ text, className, redirectLink}: ButtonProps) {
     </a>
   )
 };
+
+// Common styling
+export const rightPadding = `py-4 px-6`;
+
+export const spaceBetweenDiv = 'gap-4';
+
+export const flexColSpaceBetweenDiv = `flex flex-col ${spaceBetweenDiv}`;
+
+// Specific styling
+// Left Section
+export const nameStyle = `text-5xl`;
+export const jobPositionStyle = `text-2xl`;
+
+
+// Right Section
+export const rightSections = `
+  ${rightPadding} ${flexColSpaceBetweenDiv}
+`;
+
+export const individualProjectExperience = `
+  ${rightPadding} flex flex-row hover:bg-slate-300 rounded-2xl
+`;
+
+export const timelineStyle = `basis-1/4`;
+export const projectExperienceInformationStyle = `basis-3/4`;
