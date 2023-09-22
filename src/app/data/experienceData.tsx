@@ -8,7 +8,7 @@ export const experienceData = [
   },
   {
     id: 2,
-    time: 'Jun 2021 - Present',
+    time: 'Jan 2020 - Mar 2022',
     position: 'Mechanical Design Engineer',
     name: 'Collins Aerospace',
     text: 'Designed and analyzed complex system functionalities to significantly increase efficiency. Also, managed and communicated with a team of engineers to certify processes.'

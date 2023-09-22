@@ -1,4 +1,8 @@
-import { individualProjectExperience, timelineStyle, projectExperienceInformationStyle } from "./style/constantStyles";
+import { useState, useEffect } from 'react';
+import { individualProjectExperience, timelineStyle, projectExperienceInformationStyle, projectExperienceNamePositionStyle, projectExperienceDescriptionStyle } from "./style/constantStyles";
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import './style/globals.css';
+
 
 type ProjectProps = {
   projectInfo: {
@@ -13,30 +17,48 @@ type ProjectProps = {
 };
 
 export default function Project({ projectInfo }: ProjectProps) {
+  // State
+  const [symbolAnimate, setSymbolAnimate] = useState(false);
+
+  // Custom functions
+  const handleMouseEnter = () => {setSymbolAnimate(true)};
+  const handleMouseLeave = () => {setSymbolAnimate(false)};
+
+  const constantSection = () => {
+    return (
+      <>
+        <div className={`timeline ${timelineStyle}`}>{projectInfo.time}</div>
+        <div className={`project-information ${projectExperienceInformationStyle}`}>
+          <div className={`project-position-and-name flex flow-row justify-between ${projectExperienceNamePositionStyle}`}>{projectInfo.position} | {projectInfo.name} {showRedirectSymbol()}</div>
+          <div className={`project-description ${projectExperienceDescriptionStyle}`}>{projectInfo.text}</div>
+        </div>
+        {/* {showRedirectSymbol()} */}
+      </>
+    )
+  };
+
+  const showRedirectSymbol = () => {
+    if (projectInfo.link) {
+      return (
+        <div className={`redirect-symbol ${symbolAnimate ? `animate-shake` : ``}`}>
+          <KeyboardDoubleArrowRightIcon />
+        </div>
+      )
+    }
+  };
 
   const linkDoesNotExist = () => {
     return (
-      <div className={`project ${individualProjectExperience}`}>
-        <div className={`timeline ${timelineStyle}`}>{projectInfo.time}</div>
-        <div className={`project-information ${projectExperienceInformationStyle}`}>
-          <div className='project-position-and-name'>{projectInfo.position} | {projectInfo.name}</div>
-          <div className='project-description'>{projectInfo.text}</div>
-        </div>
-      </div>
+      <div className={`project ${individualProjectExperience}`} >{constantSection()}</div>
     )
   };
 
   const linkDoesExist = () => {
     return (
-      <a className={`project ${individualProjectExperience}`} href='https://shelfshare.org/' target='_blank'>
-        <div className={`timeline ${timelineStyle}`}>{projectInfo.time}</div>
-        <div className={`project-information ${projectExperienceInformationStyle}`}>
-          <div className='project-position-and-name'>{projectInfo.position} | {projectInfo.name}</div>
-          <div className='project-description'>{projectInfo.text}</div>
-        </div>
-      </a>
+      <a className={`project ${individualProjectExperience}`} href={projectInfo.redirectLink} target='_blank' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>{constantSection()}</a>
     )
   };
 
   return projectInfo.link ? linkDoesExist() : linkDoesNotExist();
+
 };
