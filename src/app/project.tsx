@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { individualProjectExperience, timelineStyle, projectExperienceInformationStyle, projectExperienceNamePositionStyle, projectExperienceDescriptionStyle } from "./style/constantStyles";
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import './style/globals.css';
+import { TechStack } from './reuseableComponents/reuseableComponents';
 
 
 type ProjectProps = {
@@ -13,16 +14,17 @@ type ProjectProps = {
     text: string,
     redirectLink: string,
     link: boolean,
+    techStack: string[],
   }
 };
 
 export default function Project({ projectInfo }: ProjectProps) {
   // State
-  const [symbolAnimate, setSymbolAnimate] = useState(false);
+  const [ symbolAnimate, setSymbolAnimate ] = useState(false);
 
   // Custom functions
-  const handleMouseEnter = () => {setSymbolAnimate(true)};
-  const handleMouseLeave = () => {setSymbolAnimate(false)};
+  const handleMouseEnter = () => { setSymbolAnimate(true) };
+  const handleMouseLeave = () => { setSymbolAnimate(false) };
 
   const constantSection = () => {
     return (
@@ -31,8 +33,10 @@ export default function Project({ projectInfo }: ProjectProps) {
         <div className={`project-information ${projectExperienceInformationStyle}`}>
           <div className={`project-position-and-name flex flow-row justify-between ${projectExperienceNamePositionStyle}`}>{projectInfo.position} | {projectInfo.name} {showRedirectSymbol()}</div>
           <div className={`project-description ${projectExperienceDescriptionStyle}`}>{projectInfo.text}</div>
+          <div className={`project-tech-stack flex flex-wrap gap-2`}>
+            {projectInfo.techStack.map((techName) => <TechStack key={techName} name={techName} />)}
+          </div>
         </div>
-        {/* {showRedirectSymbol()} */}
       </>
     )
   };

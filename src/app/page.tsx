@@ -1,20 +1,8 @@
 // Import statements
 "use client"
 import './style/globals.css';
-import { useState, useEffect } from 'react';
-import { promises as fs } from 'fs';
 import InitialPage from './initialPage';
-import { Navigation } from './navigation';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import { ButtonStyle } from './style/constantStyles';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { projectData } from './data/projectData';
-import EmailSharpIcon from '@mui/icons-material/EmailSharp';
-import { experienceData } from './data/experienceData';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import LocalPhoneSharpIcon from '@mui/icons-material/LocalPhoneSharp';
-import Experience from './experience';
-import Project from './project';
+import { useState, useEffect } from 'react';
 import TransitionPage from './transitionPage';
 
 // Constants
