@@ -34,16 +34,16 @@ export default function TransitionPage() {
   return (
     <>
       <div className={`app lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 font-sans transition-opacity duration-1000 ease-in ${fadeText ? 'opacity-100' : 'opacity-0'}`}>
-        <div className='basis-1/3 lg:sticky gap-4 flex flex-col justify-between max-h-screen top-0 sm:py-14 px-6'>
-          <div className='introduction flex flex-col gap-4 justify-center content-center'>
+        <div className='basis-1/3 lg:sticky gap-4 flex flex-col justify-between max-h-screen top-0 py-14 px-6' >
+          <div className='introduction flex flex-col gap-4 lg:items-start items-center'>
             <img className='head-shot rounded-full' src={headShotURL} width='250' height='250'></img>
             <div className={`name ${nameStyle}`}>Kevin Hoang</div>
-            <div className={`job-position ${jobPositionStyle}`}>Full Stack Engineer</div>
+            <div className={`job-position ${jobPositionStyle}`}>Software Engineer</div>
             <div className='motto'>Changing Lives Through Technology & Service</div>
             {/* <div className='phone-number'>860-682-2251</div>
             <div className='email'>KNHoang10@gmail.com</div> */}
           </div>
-          <div className='social-media flex flex-row gap-5'>
+          <div className='social-media flex flex-row gap-5 lg:justify-start justify-center'>
             <a href='https://github.com/knhoang10' target='_blank' className={`github-icon ${iconStyle} hover:text-white`}><GitHubIcon style={iconStyle} /></a>
             <a href='https://www.linkedin.com/in/knhoangre/' target='_blank' className={`linkedin-icon ${iconStyle} hover:text-white`}><LinkedInIcon style={iconStyle} /></a>
             <a href='https://g.co/kgs/dPsN3F' target='_blank' className={`linkedin-icon ${iconStyle} hover:text-white`}><GoogleIcon style={iconStyle} /></a>
@@ -82,7 +82,7 @@ export default function TransitionPage() {
             <div className='connect-with-me-description'>
               Don't hesitate to get in touch! I'm always thrilled to discuss both my personal journey & professional projects. Whether it's delving into my resume, exploring my LinkedIn profile, or diving into the nitty gritty of my projects on GitHub.
             </div>
-            <div className={`redirect-buttons flex flex-row gap-4`}>
+            <div className={`redirect-buttons flex flex-row flex-wrap gap-4`}>
               <ButtonStyle text='Call' className='call-redirect-button' redirectLink='tel:8606822251' />
               <ButtonStyle text='Email' className='Email-redirect-button' redirectLink='mailto:knhoang10@gmail.com?subject=We%20Want%20To%20Hire%20You!' />
               <ButtonStyle text='Resume' className='resume-redirect-button' redirectLink='https://drive.google.com/file/d/1DDo1BzYQkYhMWH0VogBXw1_CRibEKn0y/view?usp=sharing' />
