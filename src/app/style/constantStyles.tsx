@@ -1,5 +1,5 @@
 // Common styling -----------------------------------
-export const rightPadding = `py-4 px-6`;
+export const rightPadding = ` py-4 px-6`;
 
 export const spaceBetweenDiv = 'gap-5';
 
@@ -18,7 +18,7 @@ export const rightSections = `
 `;
 
 export const individualProjectExperience = `
-  ${rightPadding} flex flex-row hover:bg-slate-800 rounded-2xl
+  ${rightPadding} flex lg:flex-row flex-col hover:bg-slate-800 rounded-2xl
 `;
 
 export const timelineStyle = `lg:basis-1/4`;
