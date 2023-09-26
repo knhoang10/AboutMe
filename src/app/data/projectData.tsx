@@ -8,7 +8,7 @@ export const projectData = [
     redirectLink: '',
     text: 'A custom built personal website to showcase all of specifics and even get to know myself as a person.',
     techStack: [
-      'TypeScript', 'React', 'Next', 'Vercel', 'Tailwind', 'Material UI', 'JavaScript'
+      'TypeScript', 'React', 'Next', 'Vercel', 'Tailwind', 'Material UI'
     ],
   },
   {

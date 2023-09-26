@@ -35,7 +35,7 @@ export default function TransitionPage() {
     <>
       <div className={`app lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 font-sans transition-opacity duration-1000 ease-in ${fadeText ? 'opacity-100' : 'opacity-0'}`}>
         <div className='basis-1/3 lg:sticky gap-4 flex flex-col justify-between max-h-screen top-0 lg:py-14 px-6' >
-          <div className='introduction flex flex-col gap-4 lg:items-start items-center'>
+          <div className='introduction flex flex-col lg:gap-4 gap-2 lg:items-start items-center'>
             <img className='head-shot rounded-full' src={headShotURL} width='250' height='250'></img>
             <div className={`name ${nameStyle}`}>Kevin Hoang</div>
             <div className={`job-position ${jobPositionStyle}`}>Software Engineer</div>
@@ -53,7 +53,7 @@ export default function TransitionPage() {
 
         <div className={`basis-2/3 ${flexColSpaceBetweenDiv} py-14`}>
           <div className={`about-section ${rightSections} pb-12`}>
-            <p className={`about-me ${newSectionTitle}`}>ABOUT ME</p>
+            <p className={`about-me ${newSectionTitle} `}>ABOUT ME</p>
             <p className='getting-into-software'>Sometime long ago, my first experience in web development was redesigning my MySpace homepage. It was really ugly, but thankfully technology has improved and it allowed me to create better designed websites. I have had the liberty to build applications for corporations and small businesses.</p>
             <p className='what-i-am-doing-now'>Presently, I am actively engaged in software initiatives to expand my real estate business. This allows me to free up valuable time and resources to concentrate on the paramount aspect of any thriving business—my valued clients. </p>
             <p className='about-hobbies'> I don't just hide behind the desk though! You will likely find me at the gym or out and about, eager to connect with new faces and engage with the world!</p>

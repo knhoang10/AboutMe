@@ -4,7 +4,7 @@ export const experienceData = [
     time: '2021 - Present',
     position: 'Real Estate Agent',
     name: 'eXp Realty & Keller Williams Realty',
-    text: 'Designed and analyzed complex system functionalities to significantly increase efficiency. Also, managed and communicated with a team of engineers to certify processes.'
+    text: 'Network and communicate with clients and real estate transaction team members (lawyers & lenders). Build programs to reduce significant time in marketing.'
   },
   {
     id: 2,

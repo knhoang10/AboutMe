@@ -11,7 +11,7 @@ export function ButtonStyle({ text, className, redirectLink}: ButtonProps) {
   return (
     <a href={redirectLink} target='_blank' className={`${className} ${outerButtonStyle}`}>
       <span className={innerButtonStyle}></span>
-      <span className='relative'>{text}</span>
+      <span className='relative text-center'>{text}</span>
     </a>
   )
 };

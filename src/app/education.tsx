@@ -8,6 +8,7 @@ type EducationProps = {
     title: string,
     name: string,
     degree: string,
+    text: string
   }
 };
 
@@ -16,8 +17,9 @@ export default function Education({ educationInfo }: EducationProps) {
     <div className={`education ${individualProjectExperience}`}>
       <div className={`timeline ${timelineStyle}`}>{educationInfo.time}</div>
       <div className={`education-information ${projectExperienceInformationStyle}`}>
-        <div className={`experience-title-and-name ${projectExperienceNamePositionStyle}`}>{educationInfo.title} | {educationInfo.name}</div>
-        <div className={`experience-degree ${projectExperienceDescriptionStyle}`}>{educationInfo.degree}</div>
+        <div className={`education-title-and-name ${projectExperienceNamePositionStyle}`}>{educationInfo.title} | {educationInfo.name}</div>
+        <div className={`education-degree italic ${projectExperienceDescriptionStyle}`}>{educationInfo.degree}</div>
+        <div className={`education-description`}>{educationInfo.text}</div>
       </div>
     </div>
   )

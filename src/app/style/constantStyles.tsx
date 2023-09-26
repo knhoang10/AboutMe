@@ -21,15 +21,15 @@ export const individualProjectExperience = `
   ${rightPadding} flex lg:flex-row flex-col hover:bg-slate-800 rounded-2xl
 `;
 
-export const timelineStyle = `lg:basis-1/4`;
-export const projectExperienceInformationStyle = `lg:basis-3/4 ${flexColSpaceBetweenDiv}`;
+export const timelineStyle = `lg:basis-1/5`;
+export const projectExperienceInformationStyle = `lg:basis-4/5 ${flexColSpaceBetweenDiv}`;
 export const projectExperienceNamePositionStyle = `font-bold text-white`;
 export const projectExperienceDescriptionStyle = `text-slate-300`;
 
 // Button
 // Reusable button
 export const outerButtonStyle = `
-relative bg-slate-800 rounded-lg overflow-hidden text-slate-300 px-5 py-2 group
+relative lg:w-[18%] w-[30%] bg-slate-800 rounded-lg overflow-hidden text-slate-300 px-5 py-2 group flex justify-center items-center
 `;
 export const innerButtonStyle = `
 absolute w-0 rounded-lg group-hover:w-full rounded-lg transition-all ease-out duration-200 h-full bg-blue-700 left-0 top-0
