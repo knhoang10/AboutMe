@@ -1,30 +1,78 @@
-// Common styling -----------------------------------
-export const rightPadding = ` py-4 px-6`;
+// Page styling -----------------------------------
+export const horizontalPadding = `px-6`;
+
+export const verticalPadding = `py-4`;
+
+export const padding = `${horizontalPadding} ${verticalPadding}`;
 
 export const spaceBetweenDiv = 'gap-5';
 
+export const spaceBetweenRightSections = `pb-20`;
+
 export const flexColSpaceBetweenDiv = `flex flex-col ${spaceBetweenDiv}`;
 
-export const newSectionTitle = `font-bold underline decoration-solid`;
+export const flexRowSpaceBetweenDiv = `flex flex-row ${spaceBetweenDiv}`;
+
 
 // Specific styling -----------------------------------
+// Entire app
+export const appStyle = `lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 font-sans transition-opacity duration-1000 ease-in`;
+
 // Left Section
+export const leftSectionStyle = `basis-1/3 lg:sticky justify-between max-h-screen top-0 lg:py-14 ${flexColSpaceBetweenDiv} ${padding}`;
+export const introductionStyle = `flex flex-col gap-3 lg:items-start items-center`;
+export const headshotStyle = `rounded-full`;
 export const nameStyle = `text-5xl text-white`;
 export const jobPositionStyle = `text-2xl text-slate-100`;
+export const socialMediaSectionStyle = `${flexRowSpaceBetweenDiv} lg:justify-start justify-center`
+export const iconStyle = `hover:text-white`;
 
 // Right Section
-export const rightSections = `
-  ${rightPadding} ${flexColSpaceBetweenDiv}
-`;
+export const rightSectionStyle = `basis-2/3 ${flexColSpaceBetweenDiv} py-14`;
 
-export const individualProjectExperience = `
-  ${rightPadding} flex lg:flex-row flex-col hover:bg-slate-800 rounded-2xl
-`;
+export const newSectionTitle = `font-bold underline decoration-solid`;
+export const projectSectionTitle = `font-bold underline decoration-solid ${horizontalPadding}`;
+export const experienceSectionTitle = projectSectionTitle;
+export const educationSectionTitle = projectSectionTitle;
 
-export const timelineStyle = `lg:basis-1/5`;
-export const projectExperienceInformationStyle = `lg:basis-4/5 ${flexColSpaceBetweenDiv}`;
-export const projectExperienceNamePositionStyle = `font-bold text-white`;
-export const projectExperienceDescriptionStyle = `text-slate-300`;
+// Section Containers
+export const aboutSectionStyle = `${padding} ${flexColSpaceBetweenDiv} ${spaceBetweenRightSections}`;
+export const connectSectionStyle = `${padding} ${flexColSpaceBetweenDiv}`;
+
+
+// Common project, experience, and education styles
+// Sections
+export const projectSectionStyle = `${flexColSpaceBetweenDiv} ${spaceBetweenRightSections}`;
+export const experienceSectionStyle = projectSectionStyle;
+export const educationSectionStyle = projectSectionStyle;
+
+// Timeline
+export const projectTimelineStyle = `lg:basis-1/5`;
+export const experienceTimelineStyle = projectTimelineStyle;
+export const educationTimelineStyle = projectTimelineStyle;
+
+// Information Details
+export const projectInformationStyle = `lg:basis-4/5 ${flexColSpaceBetweenDiv}`;
+export const experienceInformationStyle = projectInformationStyle;
+export const educationInformationStyle = projectInformationStyle;
+
+// Name and Position
+export const projectNamePositionStyle = `font-bold text-white flex flow-row justify-between`;
+export const experienceNamePositionStyle = projectNamePositionStyle;
+export const educationNamePositionStyle = projectNamePositionStyle;
+
+// Description
+export const projectDescriptionStyle = `text-slate-300`;
+export const experienceDescriptionStyle = projectDescriptionStyle;
+export const educationDescriptionStyle = projectDescriptionStyle;
+
+// Individual Section
+export const projectIndividualStyle = `${padding} flex lg:flex-row flex-col hover:bg-slate-800 rounded-2xl`;
+export const experienceIndividualStyle = projectIndividualStyle;
+export const educationIndividualStyle = projectIndividualStyle;
+
+// Tech Stack
+export const techStackContainerStyle = `flex flex-wrap gap-2`;
 
 // Button
 // Reusable button
@@ -41,4 +89,4 @@ export const techStackStyle = `
 `;
 
 // Material UI
-export const iconStyle = { fontSize: '2rem' };
+export const muiIconStyle = { fontSize: '2rem' };

@@ -1,3 +1,4 @@
+// Library
 import { useState, useEffect } from 'react';
 
 export default function InitialPage() {

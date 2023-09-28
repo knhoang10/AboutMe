@@ -1,15 +1,16 @@
 // Import statements
 "use client"
 import './style/globals.css';
+
+// Components
 import InitialPage from './initialPage';
-import { useState, useEffect } from 'react';
 import TransitionPage from './transitionPage';
 
-// Constants
-const headShotURL: string = 'https://drive.google.com/uc?export=view&id=1JsF8Kkz9MTObFlyec0YO5HECDvabZokU';
+// Libraries
+import { useState, useEffect } from 'react';
+
 
 export default function App() {
-
   // States
   const [showInitialPage, setShowInitialPage] = useState(true);
 

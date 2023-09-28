@@ -4,3 +4,4 @@ public/dist/bundle.js
 .env
 .next
 archive
+.DS_Store

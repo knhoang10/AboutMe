@@ -1,6 +1,5 @@
 export const projectData = [
   {
-    id: 6,
     time: '2023',
     position: 'Full Stack Engineer',
     name: 'Personal Website',
@@ -12,7 +11,6 @@ export const projectData = [
     ],
   },
   {
-    id: 1,
     time: '2023',
     position: 'Full Stack Engineer',
     name: 'Listing Platform',
@@ -24,7 +22,6 @@ export const projectData = [
     ],
   },
   {
-    id: 2,
     time: '2023',
     position: 'Full Stack Engineer',
     name: 'Shelf Share',
@@ -36,7 +33,6 @@ export const projectData = [
     ],
   },
   {
-    id: 3,
     time: '2023',
     position: 'Back-End Engineer',
     name: 'Atelier Back-End Design',
@@ -48,7 +44,6 @@ export const projectData = [
     ],
   },
   {
-    id: 4,
     time: '2023',
     position: 'Front-End Engineer',
     name: 'Atelier User Interface Design',
@@ -56,11 +51,10 @@ export const projectData = [
     redirectLink: 'https://github.com/rpp2209-gluon/fec',
     text: 'E-commerce store showcasing a variety of clothing lines with detailed information about each product. Every product has its own different styles, description, related items, question and answers, and review sections.',
     techStack: [
-      'React', 'Express', 'PostgreSQL', 'Axios', 'Babel', 'Webpack', 'Jest', 'dotenv', 'React Testing Library', 'JavaScript'
+      'React', 'Express', 'PostgreSQL', 'Axios', 'Babel', 'Webpack', 'Jest', 'dotenv', 'React Testing Library', 'JavaScript', 'CSS'
     ],
   },
   {
-    id: 5,
     time: '2022',
     position: 'Software Engineer',
     name: 'Facebook Marketplace Postings',

@@ -1,4 +1,6 @@
-import {outerButtonStyle, innerButtonStyle, techStackStyle} from '../style/constantStyles';
+// Style
+import * as styles from '../style/constantStyles';
+
 
 // Button
 type ButtonProps = {
@@ -9,8 +11,8 @@ type ButtonProps = {
 
 export function ButtonStyle({ text, className, redirectLink}: ButtonProps) {
   return (
-    <a href={redirectLink} target='_blank' className={`${className} ${outerButtonStyle}`}>
-      <span className={innerButtonStyle}></span>
+    <a href={redirectLink} target='_blank' className={`${className} ${styles.outerButtonStyle}`}>
+      <span className={styles.innerButtonStyle}></span>
       <span className='relative text-center'>{text}</span>
     </a>
   )
@@ -23,7 +25,7 @@ type TechStackProps = {
 
 export function TechStack({ name }: TechStackProps) {
   return (
-    <div className={`tech-stack-${name} ${techStackStyle}`}>
+    <div className={`tech-stack-${name} ${styles.techStackStyle}`}>
       {name}
     </div>
   )

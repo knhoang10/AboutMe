@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react';
-import { individualProjectExperience, timelineStyle, projectExperienceInformationStyle, projectExperienceNamePositionStyle, projectExperienceDescriptionStyle } from "./style/constantStyles";
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import './style/globals.css';
+
+// Libaries
+import { useState } from 'react';
+
+// Components
 import { TechStack } from './reuseableComponents/reuseableComponents';
 
+// MUI Framework
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
+// Styling
+import * as styles from './style/constantStyles';
+
+// Props
 type ProjectProps = {
   projectInfo: {
-    id: number
     time: string,
     position: string,
     name: string,
@@ -29,11 +36,11 @@ export default function Project({ projectInfo }: ProjectProps) {
   const constantSection = () => {
     return (
       <>
-        <div className={`timeline ${timelineStyle}`}>{projectInfo.time}</div>
-        <div className={`project-information ${projectExperienceInformationStyle}`}>
-          <div className={`project-position-and-name flex flow-row justify-between ${projectExperienceNamePositionStyle}`}>{projectInfo.position} | {projectInfo.name} {showRedirectSymbol()}</div>
-          <div className={`project-description ${projectExperienceDescriptionStyle}`}>{projectInfo.text}</div>
-          <div className={`project-tech-stack flex flex-wrap gap-2`}>
+        <div className={`timeline ${styles.projectTimelineStyle}`}>{projectInfo.time}</div>
+        <div className={`project-information ${styles.projectInformationStyle}`}>
+          <div className={`project-position-and-name ${styles.projectNamePositionStyle}`}>{projectInfo.position} | {projectInfo.name} {showRedirectSymbol()}</div>
+          <div className={`project-description ${styles.projectDescriptionStyle}`}>{projectInfo.text}</div>
+          <div className={`project-tech-stack ${styles.techStackContainerStyle}`}>
             {projectInfo.techStack.map((techName) => <TechStack key={techName} name={techName} />)}
           </div>
         </div>
@@ -53,13 +60,13 @@ export default function Project({ projectInfo }: ProjectProps) {
 
   const linkDoesNotExist = () => {
     return (
-      <div className={`project ${individualProjectExperience}`} >{constantSection()}</div>
+      <div className={`project ${styles.projectIndividualStyle}`} >{constantSection()}</div>
     )
   };
 
   const linkDoesExist = () => {
     return (
-      <a className={`project ${individualProjectExperience}`} href={projectInfo.redirectLink} target='_blank' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>{constantSection()}</a>
+      <a className={`project ${styles.projectIndividualStyle}`} href={projectInfo.redirectLink} target='_blank' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>{constantSection()}</a>
     )
   };
 
