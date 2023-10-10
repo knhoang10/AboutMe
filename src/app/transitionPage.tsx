@@ -52,7 +52,8 @@ export default function TransitionPage() {
         {/* Left (Web) or Top (Mobile) Section */}
         <div className={`left-section ${styles.leftSectionStyle}`} >
           <div className={`introduction ${styles.introductionStyle}`}>
-            <img className={`head-shot ${styles.headshotStyle}`} src={headShotURL} width='250' height='250'></img>
+            {/* <img className={`head-shot ${styles.headshotStyle}`} src={headShotURL} width='250' height='250'></img> */}
+            <img className={`head-shot ${styles.headshotStyle}`} src='headshot.png' width='250' height='250'></img>
             <div className={`name ${styles.nameStyle}`}>Kevin Hoang</div>
             <div className={`job-position ${styles.jobPositionStyle}`}>Software Engineer</div>
             <div className='motto'>Changing Lives Through Technology & Service</div>
