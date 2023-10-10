@@ -22,7 +22,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className='bg-light-black text-slate-300'>
+    <div className={`bg-light-black text-slate-300`}>
       {showInitialPage ? <InitialPage /> : <TransitionPage />}
     </div>
   )

@@ -52,13 +52,12 @@ export default function TransitionPage() {
         {/* Left (Web) or Top (Mobile) Section */}
         <div className={`left-section ${styles.leftSectionStyle}`} >
           <div className={`introduction ${styles.introductionStyle}`}>
-            {/* <img className={`head-shot ${styles.headshotStyle}`} src={headShotURL} width='250' height='250'></img> */}
             <img className={`head-shot ${styles.headshotStyle}`} src='headshot.png' width='250' height='250'></img>
             <div className={`name ${styles.nameStyle}`}>Kevin Hoang</div>
             <div className={`job-position ${styles.jobPositionStyle}`}>Software Engineer</div>
-            <div className='motto'>Changing Lives Through Technology & Service</div>
+            <div className={`motto ${styles.mottoStyle}`}>Changing Lives Through Technology & Service</div>
           </div>
-          {<TransitionToSection/>}
+          {<TransitionToSection />}
           <div className={`social-media ${styles.socialMediaSectionStyle}`}>
             <a href='https://github.com/knhoang10' target='_blank' className={`github-icon ${styles.iconStyle}`}><GitHubIcon style={styles.muiIconStyle} /></a>
             <a href='https://www.linkedin.com/in/knhoangre/' target='_blank' className={`linkedin-icon ${styles.iconStyle}`}><LinkedInIcon style={styles.muiIconStyle} /></a>
@@ -94,6 +93,7 @@ export default function TransitionPage() {
             {educationData.map((education, index) => <Education key={index} educationInfo={education} />)}
           </section>
 
+
           {/* Connect With Me Section */}
           <section className={`connect-with-me-section ${styles.connectSectionStyle}`}>
             <p className={`connect-with-me ${styles.newSectionTitle}`}>CONNECT WITH ME!</p>
@@ -107,7 +107,7 @@ export default function TransitionPage() {
             </div>
           </section>
         </div>
-      </div>
+      </div >
     </>
   )
 };

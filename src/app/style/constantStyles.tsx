@@ -7,7 +7,7 @@ export const padding = `${horizontalPadding} ${verticalPadding}`;
 
 export const spaceBetweenDiv = 'gap-5';
 
-export const spaceBetweenRightSections = `pb-20`;
+export const spaceBetweenRightSections = `pb-0`;
 
 export const flexColSpaceBetweenDiv = `flex flex-col ${spaceBetweenDiv}`;
 
@@ -16,23 +16,24 @@ export const flexRowSpaceBetweenDiv = `flex flex-row ${spaceBetweenDiv}`;
 
 // Specific styling -----------------------------------
 // Entire app
-export const appStyle = `lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 font-sans transition-opacity duration-1000 ease-in`;
+export const appStyle = `lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 font-['Lato'] transition-opacity duration-1000 ease-in`;
 
 // Left Section
 export const leftSectionStyle = `basis-1/3 lg:sticky justify-between max-h-screen top-0 lg:py-14 ${flexColSpaceBetweenDiv} ${padding}`;
 export const introductionStyle = `flex flex-col gap-3 lg:items-start items-center`;
 export const headshotStyle = `rounded-full`;
 export const nameStyle = `text-5xl text-white`;
-export const jobPositionStyle = `text-2xl text-slate-100`;
+export const jobPositionStyle = `text-xl text-slate-100`;
+export const mottoStyle = `text-sm`;
 export const socialMediaSectionStyle = `${flexRowSpaceBetweenDiv} lg:justify-start justify-center `
 export const iconStyle = `transition ease-in-out hover:text-white hover:-translate-1 hover:scale-125`;
 
 // Right Section
-export const rightSectionStyle = `basis-2/3 ${flexColSpaceBetweenDiv} py-14`;
-// export const rightSectionStyle = `basis-2/3 flex flex-col gap-y-4`;
+// export const rightSectionStyle = `basis-2/3 ${flexColSpaceBetweenDiv} py-14`;
+export const rightSectionStyle = `basis-2/3 flex flex-col gap-28 py-14`;
 
-export const newSectionTitle = `font-bold underline decoration-solid`;
-export const projectSectionTitle = `font-bold underline decoration-solid ${horizontalPadding}`;
+export const newSectionTitle = `font-bold decoration-solid text-xl`;
+export const projectSectionTitle = `${newSectionTitle} ${horizontalPadding}`;
 export const experienceSectionTitle = projectSectionTitle;
 export const educationSectionTitle = projectSectionTitle;
 
