@@ -24,11 +24,12 @@ export const introductionStyle = `flex flex-col gap-3 lg:items-start items-cente
 export const headshotStyle = `rounded-full`;
 export const nameStyle = `text-5xl text-white`;
 export const jobPositionStyle = `text-2xl text-slate-100`;
-export const socialMediaSectionStyle = `${flexRowSpaceBetweenDiv} lg:justify-start justify-center`
-export const iconStyle = `hover:text-white`;
+export const socialMediaSectionStyle = `${flexRowSpaceBetweenDiv} lg:justify-start justify-center `
+export const iconStyle = `transition ease-in-out hover:text-white hover:-translate-1 hover:scale-125`;
 
 // Right Section
 export const rightSectionStyle = `basis-2/3 ${flexColSpaceBetweenDiv} py-14`;
+// export const rightSectionStyle = `basis-2/3 flex flex-col gap-y-4`;
 
 export const newSectionTitle = `font-bold underline decoration-solid`;
 export const projectSectionTitle = `font-bold underline decoration-solid ${horizontalPadding}`;
