@@ -16,7 +16,7 @@ export const flexRowSpaceBetweenDiv = `flex flex-row ${spaceBetweenDiv}`;
 
 // Specific styling -----------------------------------
 // Entire app
-export const appStyle = `lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 font-['Lato'] transition-opacity duration-1000 ease-in`;
+export const appStyle = `lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24 transition-opacity duration-1000 ease-in`;
 
 // Left Section
 export const leftSectionStyle = `basis-1/3 lg:sticky justify-between max-h-screen top-0 lg:py-14 ${flexColSpaceBetweenDiv} ${padding}`;

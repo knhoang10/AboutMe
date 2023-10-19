@@ -18,7 +18,7 @@ export const projectData = [
     redirectLink: '',
     text: 'Real estate marketplace that provides users with resources about properties on the market. It lists all the properties on the market and gives the users power to make an informed decision based on user inputs.',
     techStack: [
-      'React', 'Express', 'Material UI', 'Axios', 'Google Maps API', 'JavaScript'
+      'React', 'Express', 'Django', 'Material UI', 'Tailwind CSS', 'Google Maps API', 'TypeScript', 'Python'
     ],
   },
   {
@@ -29,7 +29,7 @@ export const projectData = [
     redirectLink: 'https://shelfshare.org/',
     text: 'Book-sharing platform where users can rent out their personal libraries. Users can sign up and log in via Google accounts, input essential information, scan their books into the system, and manage borrowing and lending activities. The platform also offers a book review feature and an API for advertisers to analyze book trends.',
     techStack: [
-      'React', 'Express', 'Axios', 'React-Bootstrap', 'PostgreSQL', 'Google OAuth 2.0', 'dotenv', 'uuid', 'jwt-decode', 'Docker', 'JavaScript'
+      'React', 'Express', 'React-Bootstrap', 'PostgreSQL', 'Docker', 'Google OAuth 2.0', 'dotenv', 'uuid', 'jwt-decode', 'JavaScript', 'Axios'
     ],
   },
   {
