@@ -1,5 +1,16 @@
 export const projectData = [
   {
+    time: '2024',
+    position: 'Full Stack Engineer',
+    name: 'Listing Platform',
+    link: false,
+    redirectLink: '',
+    text: 'Real estate marketplace that provides users with resources about properties on the market. It lists all the properties on the market and gives the users power to make an informed decision based on user inputs.',
+    techStack: [
+      'React', 'Express', 'Django', 'Material UI', 'Tailwind CSS', 'Google Maps API', 'TypeScript', 'Python'
+    ],
+  },
+  {
     time: '2023',
     position: 'Full Stack Engineer',
     name: 'Personal Website',
@@ -8,17 +19,6 @@ export const projectData = [
     text: 'A custom built personal website to showcase all of specifics and even get to know myself as a person.',
     techStack: [
       'TypeScript', 'React', 'Next', 'Vercel', 'Tailwind', 'Material UI'
-    ],
-  },
-  {
-    time: '2023',
-    position: 'Full Stack Engineer',
-    name: 'Listing Platform',
-    link: false,
-    redirectLink: '',
-    text: 'Real estate marketplace that provides users with resources about properties on the market. It lists all the properties on the market and gives the users power to make an informed decision based on user inputs.',
-    techStack: [
-      'React', 'Express', 'Django', 'Material UI', 'Tailwind CSS', 'Google Maps API', 'TypeScript', 'Python'
     ],
   },
   {
