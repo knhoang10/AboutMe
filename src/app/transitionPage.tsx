@@ -45,6 +45,16 @@ export default function TransitionPage() {
     }, 0);
   }, []);
 
+  // Header
+  const headerTitle = (titleName: string) => {
+    return (
+      <div className="bg-light-black relative flex items-center justify-center w-full">
+        <span className={`relative px-12 bg-inherit z-10 ${styles.newSectionTitle}`}>{titleName}</span>
+        <div className="absolute w-full h-[3px] bg-gray-500"></div>
+      </div>
+    )
+  };
+
   return (
     <>
       <div className={`app ${styles.appStyle} ${fadeText ? 'opacity-100' : 'opacity-0'}`}>
@@ -61,8 +71,8 @@ export default function TransitionPage() {
           <div className={`social-media ${styles.socialMediaSectionStyle}`}>
             <a href='https://github.com/knhoang10' target='_blank' className={`github-icon ${styles.iconStyle}`}><GitHubIcon style={styles.muiIconStyle} /></a>
             <a href='https://www.linkedin.com/in/knhoangre/' target='_blank' className={`linkedin-icon ${styles.iconStyle}`}><LinkedInIcon style={styles.muiIconStyle} /></a>
-            <a href='https://g.co/kgs/dPsN3F' target='_blank' className={`linkedin-icon ${styles.iconStyle}`}><GoogleIcon style={styles.muiIconStyle} /></a>
-            <a href='https://www.instagram.com/knhoangre/' target='_blank' className={`instagram-icon ${styles.iconStyle}`}><InstagramIcon style={styles.muiIconStyle} /></a>
+            {/* <a href='https://g.co/kgs/dPsN3F' target='_blank' className={`linkedin-icon ${styles.iconStyle}`}><GoogleIcon style={styles.muiIconStyle} /></a>
+            <a href='https://www.instagram.com/knhoangre/' target='_blank' className={`instagram-icon ${styles.iconStyle}`}><InstagramIcon style={styles.muiIconStyle} /></a> */}
           </div>
         </div>
 
@@ -71,39 +81,44 @@ export default function TransitionPage() {
 
           {/* About Me Section */}
           <section className={`about-section ${styles.aboutSectionStyle}`}>
-            <p className={`about-me ${styles.newSectionTitle}`}>ABOUT ME</p>
-            {aboutMeData.map((aboutMe, index) => <p key={index} className='about-me-detail'>{aboutMe.text}</p>)}
+            {headerTitle('ABOUT ME')}
+            {/* <p className={`about-me ${styles.newSectionTitle}`}>ABOUT ME</p> */}
+            {aboutMeData.map((aboutMe, index) => <p key={index} className={`about-me-detail ${styles.horizontalPadding}`}>{aboutMe.text}</p>)}
           </section>
 
           {/* Project Section */}
           <section className={`projects ${styles.projectSectionStyle}`}>
-            <p className={`${styles.projectSectionTitle}`}>PROJECTS</p>
+            {headerTitle('PROJECT')}
+            {/* <p className={`${styles.projectSectionTitle}`}>PROJECTS</p> */}
             {projectData.map((project, index) => <Project key={index} projectInfo={project} />)}
           </section>
 
           {/* Experience Section */}
           <section className={`experiences ${styles.experienceSectionStyle}`}>
-            <p className={`${styles.experienceSectionTitle}`}>EXPERIENCE</p>
+            {headerTitle('EXPERIENCE')}
+            {/* <p className={`${styles.experienceSectionTitle}`}>EXPERIENCE</p> */}
             {experienceData.map((experience, index) => <Experience key={index} experienceInfo={experience} />)}
           </section>
 
           {/* Education Section */}
           <section className={`educations ${styles.educationSectionStyle}`}>
-            <p className={`${styles.educationSectionTitle}`}>EDUCATION</p>
+            {headerTitle('EDUCATION')}
+            {/* <p className={`${styles.educationSectionTitle}`}>EDUCATION</p> */}
             {educationData.map((education, index) => <Education key={index} educationInfo={education} />)}
           </section>
 
 
           {/* Connect With Me Section */}
           <section className={`connect-with-me-section ${styles.connectSectionStyle}`}>
-            <p className={`connect-with-me ${styles.newSectionTitle}`}>CONNECT WITH ME!</p>
-            {connectWithMeData.map((connectWithMe, index) => <p key={index} className='connect-with-me-detail'>{connectWithMe.text}</p>)}
-            <div className={`redirect-buttons flex flex-row flex-wrap gap-4`}>
+            {headerTitle('CONNECT WITH ME!')}
+            {/* <p className={`connect-with-me ${styles.newSectionTitle}`}>CONNECT WITH ME!</p> */}
+            {connectWithMeData.map((connectWithMe, index) => <p key={index} className={`connect-with-me-detail ${styles.horizontalPadding}`}>{connectWithMe.text}</p>)}
+            <div className={`redirect-buttons flex flex-row flex-wrap gap-4 ${styles.horizontalPadding}`}>
               <ButtonStyle text='Call' className='call-redirect-button' redirectLink='tel:8606822251' />
-              <ButtonStyle text='Email' className='Email-redirect-button' redirectLink='mailto:knhoang10@gmail.com' />
+              <ButtonStyle text='Email' className='email-redirect-button' redirectLink='mailto:knhoang10@gmail.com' />
               <ButtonStyle text='Resume' className='resume-redirect-button' redirectLink='https://drive.google.com/file/d/1DDo1BzYQkYhMWH0VogBXw1_CRibEKn0y/view?usp=sharing' />
-              <ButtonStyle text='GitHub' className='github-redirect-button' redirectLink='https://github.com/knhoang10' />
-              <ButtonStyle text='LinkedIn' className='linkedin-redirect-button' redirectLink='https://www.linkedin.com/in/knhoangre/' />
+              {/* <ButtonStyle text='GitHub' className='github-redirect-button' redirectLink='https://github.com/knhoang10' />
+              <ButtonStyle text='LinkedIn' className='linkedin-redirect-button' redirectLink='https://www.linkedin.com/in/knhoangre/' /> */}
             </div>
           </section>
         </div>

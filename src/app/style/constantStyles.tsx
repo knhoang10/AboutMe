@@ -38,7 +38,7 @@ export const experienceSectionTitle = projectSectionTitle;
 export const educationSectionTitle = projectSectionTitle;
 
 // Section Containers
-export const aboutSectionStyle = `${padding} ${flexColSpaceBetweenDiv} ${spaceBetweenRightSections}`;
+export const aboutSectionStyle = `${flexColSpaceBetweenDiv} ${spaceBetweenRightSections}`;
 export const connectSectionStyle = `${padding} ${flexColSpaceBetweenDiv}`;
 
 
@@ -79,7 +79,7 @@ export const techStackContainerStyle = `flex flex-wrap gap-2`;
 // Button
 // Reusable button
 export const outerButtonStyle = `
-relative lg:w-[18%] w-[30%] bg-slate-800 rounded-lg overflow-hidden text-slate-300 px-5 py-2 group flex justify-center items-center
+relative lg:w-[31.5%] w-[30%] bg-slate-800 rounded-lg overflow-hidden text-slate-300 px-5 py-2 group flex justify-center items-center
 `;
 export const innerButtonStyle = `
 absolute w-0 rounded-lg group-hover:w-full rounded-lg transition-all ease-out duration-200 h-full bg-blue-700 left-0 top-0
