@@ -1,20 +1,11 @@
-// Library
-import { useState, useEffect } from 'react';
+// Data
+import { siteData } from './data/siteData';
 
 export default function InitialPage() {
-  // States
-  const [fadeText, setFadeText] = useState(false);
-
-  // Effects
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setFadeText(true);
-    }, 750);
-  }, []);
-
+  // Fades out in pure CSS (.splash in globals.css), then stops catching clicks
   return (
-    <div className={`initial-page text-white flex flex-col justify-center items-center h-screen text-5xl uppercase transition-opacity duration-1000 ease-out ${fadeText ? 'opacity-0' : 'opacity-100'}`}>
-      <span className="text-center">Kevin Hoang Portfolio</span>
+    <div className='initial-page splash fixed inset-0 z-50 flex flex-col justify-center items-center bg-light-black text-white text-5xl uppercase' aria-hidden>
+      <span className="text-center">{siteData.name} Portfolio</span>
     </div>
   )
 };

@@ -1,68 +1,193 @@
-export const projectData = [
+// status
+//   live     - publicly reachable today
+//   stealth  - unreleased product; described by how it's built, not what it does
+//   private  - personal or internal tool, code kept private
+//   archived - past project that is no longer running
+export type ProjectStatus = 'live' | 'stealth' | 'private' | 'archived';
+
+export type ProjectInfo = {
+  year: string,
+  role: string,
+  name: string,
+  summary: string,
+  techStack: string[],
+  status: ProjectStatus,
+  featured?: boolean,
+  flagship?: boolean,
+  href?: string,
+};
+
+export const projectData: ProjectInfo[] = [
+  // Featured -----------------------------------
   {
-    time: '2024',
-    position: 'Full Stack Engineer',
+    year: '2026',
+    role: 'Founder & Full-Stack Engineer',
+    name: 'Real-Estate Transaction Platform',
+    summary: 'A full-stack product built from the ground up: pre-rendered marketing pages for speed and SEO, secure accounts, Stripe checkout, legally binding e-signatures, generated PDF documents, and transactional email, all backed by serverless edge functions. Runs on a fully containerized local stack that mirrors production.',
+    techStack: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Edge Functions', 'Stripe', 'Resend', 'pdf-lib', 'Zod', 'Docker'],
+    status: 'stealth',
+    featured: true,
+    flagship: true,
+  },
+  {
+    year: '2026',
+    role: 'Founder & Full-Stack Engineer',
+    name: 'Marketing Automation SaaS',
+    summary: 'A multi-service SaaS that turns raw inputs into finished, on-brand media and publishes it on a schedule. Six containerized services (web app, job queue, headless-browser renderer, video renderer, scheduler and database) with subscriptions, OAuth sign-in, and AI-assisted copy.',
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Redis', 'BullMQ', 'Puppeteer', 'Remotion', 'Stripe', 'NextAuth', 'Claude API', 'Docker'],
+    status: 'stealth',
+    featured: true,
+  },
+  {
+    year: '2026',
+    role: 'Creator & Full-Stack Engineer',
+    name: 'Punch List',
+    summary: 'An offline-first business app for independent tradespeople: jobs, estimates, invoices and receipts that keep working with zero signal. Data lives on the device and syncs to the cloud when a connection returns; print-ready PDFs are rendered right on the phone.',
+    techStack: ['React', 'TypeScript', 'Vite', 'IndexedDB', 'Dexie', 'Supabase', 'pdf-lib', 'PDF.js', 'PWA'],
+    status: 'live',
+    featured: true,
+    href: 'https://punch-list-ten.vercel.app',
+  },
+  {
+    year: '2025',
+    role: 'Full-Stack Engineer',
+    name: 'kevinhoang.co',
+    summary: 'A multilingual, pre-rendered brand site for my real-estate business with a built-in CRM, lead capture, and analytics dashboards. 150+ commits of continuous iteration on performance, SEO, and conversion.',
+    techStack: ['React', 'TypeScript', 'Vite', 'SSG', 'Tailwind CSS', 'shadcn/ui', 'Supabase', 'Framer Motion', 'i18next', 'Recharts'],
+    status: 'live',
+    featured: true,
+    href: 'https://kevinhoang.co',
+  },
+  {
+    year: '2025',
+    role: 'Software Engineer',
+    name: 'Algorithmic Trading Engine',
+    summary: 'A regime-aware swing-trading system that scans a stock and ETF universe daily, sizes and places orders through a brokerage API, journals every decision, and grades its own results each month. Built around a survivorship-bias-free backtesting harness: honest validation over flattering numbers.',
+    techStack: ['Python', 'pandas', 'NumPy', 'PyArrow', 'Pydantic', 'APScheduler', 'Alpaca API', 'Matplotlib', 'Docker'],
+    status: 'private',
+    featured: true,
+  },
+  {
+    year: '2026',
+    role: 'Full-Stack Engineer',
+    name: 'Personal Finance Platform',
+    summary: 'A self-hosted app that replaces a yearly budgeting spreadsheet. Bank feeds sync automatically, transactions are cleaned and auto-categorized, and dashboards cover budgets, savings, and taxes. Deployed with Docker on a home server behind a VPN, with automated off-site backups.',
+    techStack: ['Python', 'FastAPI', 'SQLAlchemy', 'Alembic', 'Plaid API', 'React', 'TypeScript', 'TanStack Query', 'Recharts', 'Docker'],
+    status: 'private',
+    featured: true,
+  },
+
+  // Archive -----------------------------------
+  {
+    year: '2025',
+    role: 'Full-Stack Engineer',
+    name: 'Maggie Li & Co',
+    summary: 'Website for a Greater Boston real-estate team.',
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Supabase', 'Resend'],
+    status: 'live',
+    href: 'https://maggieli.co',
+  },
+  {
+    year: '2026',
+    role: 'Front-End Engineer',
+    name: 'Livo Properties',
+    summary: 'Marketing site for a property-management company.',
+    techStack: ['React', 'TypeScript', 'Vite', 'SSG', 'Tailwind CSS'],
+    status: 'live',
+    href: 'https://livo-properties-website.vercel.app',
+  },
+  {
+    year: '2025',
+    role: 'Software Engineer',
+    name: 'Document Automation Suite',
+    summary: 'Enter each fact once and generate a complete form packet, with a live preview as you type.',
+    techStack: ['Python', 'FastAPI', 'PyMuPDF', 'python-docx', 'React', 'Docker'],
+    status: 'private',
+  },
+  {
+    year: '2026',
+    role: 'Software Engineer',
+    name: 'Listing Photo Pipeline',
+    summary: 'Computer-vision photo pipeline with 3D virtual staging rendered through Blender.',
+    techStack: ['Python', 'OpenCV', 'NumPy', 'Blender', 'FastAPI'],
+    status: 'private',
+  },
+  {
+    year: '2026',
+    role: 'Full-Stack Engineer',
+    name: 'Home Inspector Exam Trainer',
+    summary: 'Gamified study app with XP, levels, audio, and AI-assisted explanations.',
+    techStack: ['Python', 'Flask', 'PyMuPDF', 'Claude API', 'JavaScript'],
+    status: 'private',
+  },
+  {
+    year: '2025',
+    role: 'Front-End Engineer',
+    name: 'License Exam Prep',
+    summary: 'Zero-dependency single-page study app driven by a JSON question bank.',
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    status: 'private',
+  },
+  {
+    year: '2025',
+    role: 'Software Engineer',
+    name: 'SwiftClip',
+    summary: 'Native macOS clipboard manager with global shortcuts, search, and pinning.',
+    techStack: ['Swift', 'SwiftUI', 'AppKit'],
+    status: 'private',
+  },
+  {
+    year: '2025',
+    role: 'Software Engineer',
+    name: 'Real-Estate Automation Suite',
+    summary: 'Chrome extensions and Selenium scripts that remove repetitive data entry from listing and marketing workflows. Grew out of a 2022 marketplace-posting bot.',
+    techStack: ['JavaScript', 'Chrome Extensions', 'Python', 'Selenium', 'pandas'],
+    status: 'private',
+  },
+  {
+    year: '2024',
+    role: 'Full-Stack Engineer',
     name: 'Listing Platform',
-    link: false,
-    redirectLink: '',
-    text: 'Real estate marketplace that provides users with resources about properties on the market. It lists all the properties on the market and gives the users power to make an informed decision based on user inputs.',
-    techStack: [
-      'React', 'Express', 'Django', 'Material UI', 'Tailwind CSS', 'Google Maps API', 'TypeScript', 'Python'
-    ],
+    summary: 'Property marketplace with map search and filters to help buyers make informed decisions.',
+    techStack: ['React', 'Express', 'Django', 'TypeScript', 'Python', 'Google Maps API'],
+    status: 'archived',
   },
   {
-    time: '2023',
-    position: 'Full Stack Engineer',
-    name: 'Personal Website',
-    link: false,
-    redirectLink: '',
-    text: 'A custom built personal website to showcase all of specifics and even get to know myself as a person.',
-    techStack: [
-      'TypeScript', 'React', 'Next', 'Vercel', 'Tailwind', 'Material UI'
-    ],
+    year: '2023',
+    role: 'Full-Stack Engineer',
+    name: 'This Website',
+    summary: 'The portfolio you are reading.',
+    techStack: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Vercel'],
+    status: 'live',
+    href: 'https://github.com/knhoang10/AboutMe',
   },
   {
-    time: '2023',
-    position: 'Full Stack Engineer',
+    year: '2023',
+    role: 'Full-Stack Engineer',
     name: 'Shelf Share',
-    link: true,
-    redirectLink: 'https://shelfshare.org/',
-    text: 'Book-sharing platform where users can rent out their personal libraries. Users can sign up and log in via Google accounts, input essential information, scan their books into the system, and manage borrowing and lending activities. The platform also offers a book review feature and an API for advertisers to analyze book trends.',
-    techStack: [
-      'React', 'Express', 'React-Bootstrap', 'PostgreSQL', 'Docker', 'Google OAuth 2.0', 'dotenv', 'uuid', 'jwt-decode', 'JavaScript', 'Axios'
-    ],
+    summary: 'Book-sharing platform with Google sign-in, barcode scanning, lending, and reviews.',
+    techStack: ['React', 'Express', 'PostgreSQL', 'Docker', 'Google OAuth 2.0'],
+    status: 'archived',
   },
   {
-    time: '2023',
-    position: 'Back-End Engineer',
-    name: 'Atelier Back-End Design',
-    link: true,
-    redirectLink: 'https://github.com/rpp2209-sdc-technetium/product',
-    text: 'E-commerce store showcasing capability of handling high traffic volumes and performance. Custom routes were created to match with the Atelier User Interface Design project. Routes were tested for average response times and success rates.',
-    techStack: [
-      'TypeScript', 'Express', 'PostgreSQL', 'Axios', 'Loader.io', 'K6'
-    ],
+    year: '2023',
+    role: 'Back-End Engineer',
+    name: 'Atelier Back-End',
+    summary: 'High-traffic e-commerce API, load-tested for response time and error rate.',
+    techStack: ['TypeScript', 'Express', 'PostgreSQL', 'K6', 'Loader.io'],
+    status: 'archived',
+    href: 'https://github.com/rpp2209-sdc-technetium/product',
   },
   {
-    time: '2023',
-    position: 'Front-End Engineer',
-    name: 'Atelier User Interface Design',
-    link: true,
-    redirectLink: 'https://github.com/rpp2209-gluon/fec',
-    text: 'E-commerce store showcasing a variety of clothing lines with detailed information about each product. Every product has its own different styles, description, related items, question and answers, and review sections.',
-    techStack: [
-      'React', 'Express', 'PostgreSQL', 'Axios', 'Babel', 'Webpack', 'Jest', 'dotenv', 'React Testing Library', 'JavaScript', 'CSS'
-    ],
-  },
-  {
-    time: '2022',
-    position: 'Software Engineer',
-    name: 'Facebook Marketplace Postings',
-    link: false,
-    redirectLink: '',
-    text: 'Real estate marketplace that provides users with resources about properties on the market. It lists all the properties on the market and gives the users power to make an informed decision based on user inputs.',
-    techStack: [
-      'Python', 'Selenium', 'Pandas', 'NumPy', 'MongoDB'
-    ],
+    year: '2023',
+    role: 'Front-End Engineer',
+    name: 'Atelier Storefront',
+    summary: 'E-commerce product pages with styles, related items, Q&A, and reviews.',
+    techStack: ['React', 'Express', 'Webpack', 'Jest', 'React Testing Library'],
+    status: 'archived',
+    href: 'https://github.com/rpp2209-gluon/fec',
   },
 ];
+
+export const featuredProjects = projectData.filter((project) => project.featured);
+export const archivedProjects = projectData.filter((project) => !project.featured);

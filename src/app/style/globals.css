@@ -1,7 +1,161 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* The angle the flagship card's border and the headshot ring sweep through. */
+@property --sweep {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@layer base {
+  body {
+    @apply bg-light-black text-slate-300 antialiased;
+  }
+  ::selection {
+    background: rgba(201, 164, 92, 0.35);
+    color: #fff;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-light-black;
+  }
+}
+
+@layer components {
+  /* A light sweep across the element on hover. */
+  .shine {
+    @apply relative overflow-hidden;
+  }
+  .shine::after {
+    content: '';
+    @apply pointer-events-none absolute inset-y-0 -left-1/2 w-2/5 -skew-x-12 bg-gradient-to-r from-transparent via-gold/[0.12] to-transparent opacity-0 transition-all duration-700;
+  }
+  .shine:hover::after {
+    @apply left-[120%] opacity-100;
+  }
+
+  .btn {
+    @apply shine inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold tracking-wide transition duration-300;
+  }
+  /* White glint on the blue button; a champagne one on dark buttons, where white would vanish. */
+  .btn-primary {
+    @apply btn bg-blue-700 text-white shadow-[0_10px_30px_-12px_rgba(29,78,216,0.9)] hover:-translate-y-0.5 hover:bg-blue-600;
+  }
+  .btn-primary::after {
+    @apply from-transparent via-white/30 to-transparent;
+  }
+  .btn-ghost {
+    @apply btn border border-white/[0.15] bg-white/[0.03] text-slate-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-white;
+  }
+  .btn-ghost::after {
+    @apply from-transparent via-gold/40 to-transparent;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/[0.06] bg-white/[0.025] transition duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-blue-400/30 hover:bg-white/[0.045] hover:shadow-glow-blue;
+  }
+
+  /* The flagship project: a blue-and-gold line that travels round its border. */
+  .sweep-border {
+    background:
+      linear-gradient(#161d24, #161d24) padding-box,
+      conic-gradient(from var(--sweep), rgba(201, 164, 92, 0.1), #c9a45c, #3b82f6, rgba(201, 164, 92, 0.1) 40%) border-box;
+    border: 1px solid transparent;
+    animation: sweep 6s linear infinite;
+  }
+  .photo-ring {
+    background: conic-gradient(from var(--sweep), #1d4ed8, #c9a45c, #1d4ed8 55%, #c9a45c 80%, #1d4ed8);
+    animation: sweep 10s linear infinite;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-gold-light via-gold to-gold-light bg-clip-text text-transparent;
+  }
+  .text-gradient-name {
+    @apply bg-gradient-to-r from-white via-white to-gold-light bg-clip-text text-transparent;
+  }
+
+  /* Page background: two slow-moving lights over a fine grid. */
+  .ambient {
+    @apply pointer-events-none fixed inset-0 -z-10 overflow-hidden;
+  }
+  .ambient::before,
+  .ambient::after {
+    content: '';
+    @apply absolute rounded-full blur-3xl motion-safe:animate-drift;
+  }
+  .ambient::before {
+    @apply -left-40 -top-40 h-[34rem] w-[34rem] bg-blue-700/20;
+  }
+  .ambient::after {
+    @apply -bottom-64 right-[-14rem] h-[30rem] w-[30rem] bg-gold/[0.07];
+    animation-delay: -9s;
+  }
+  .grid-lines {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 30% 20%, black 20%, transparent 70%);
+  }
+
+  /* Follows the mouse on desktop; transitionPage sets --spot-x / --spot-y. */
+  .spotlight {
+    background: radial-gradient(600px circle at var(--spot-x, -100%) var(--spot-y, -100%), rgba(29, 78, 216, 0.12), transparent 80%);
+  }
+}
+
+@keyframes sweep {
+  to {
+    --sweep: 360deg;
+  }
+}
+
+/* The intro title covers the page, then fades away on its own. No JavaScript needed,
+   so the real content is always in the served HTML underneath it. */
+.splash {
+  animation: splash-out 0.9s ease-out 0.85s forwards;
+}
+@keyframes splash-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Staggered entrance; the delay is set inline. */
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Scroll reveal. useReveal arms only elements still below the fold, so nothing the
+   reader has already seen disappears, and content stays visible without JavaScript. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-armed {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal-armed.reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

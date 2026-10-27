@@ -1,75 +1,53 @@
-import './style/globals.css';
-
-// Libaries
-import { useState } from 'react';
-
 // Components
-import { TechStack } from './reuseableComponents/reuseableComponents';
+import { TechStack, StatusBadge } from './reuseableComponents/reuseableComponents';
+
+// Data
+import { ProjectInfo } from './data/projectData';
 
 // MUI Framework
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import NorthEastIcon from '@mui/icons-material/NorthEast';
 
 // Styling
 import * as styles from './style/constantStyles';
 
 // Props
 type ProjectProps = {
-  projectInfo: {
-    time: string,
-    position: string,
-    name: string,
-    text: string,
-    redirectLink: string,
-    link: boolean,
-    techStack: string[],
-  }
+  projectInfo: ProjectInfo,
+  wide?: boolean,
 };
 
-export default function Project({ projectInfo }: ProjectProps) {
-  // State
-  const [ symbolAnimate, setSymbolAnimate ] = useState(false);
-
-  // Custom functions
-  const handleMouseEnter = () => { setSymbolAnimate(true) };
-  const handleMouseLeave = () => { setSymbolAnimate(false) };
+export default function Project({ projectInfo, wide = false }: ProjectProps) {
+  const cardStyle = `project ${styles.featuredCardStyle} ${projectInfo.flagship ? styles.featuredCardFlagshipStyle : styles.featuredCardDefaultStyle} ${wide ? 'md:col-span-2' : ''}`;
 
   const constantSection = () => {
     return (
       <>
-        <div className={`timeline ${styles.projectTimelineStyle}`}>{projectInfo.time}</div>
-        <div className={`project-information ${styles.projectInformationStyle}`}>
-          <div className={`project-position-and-name ${styles.projectNamePositionStyle}`}>{projectInfo.position} | {projectInfo.name} {showRedirectSymbol()}</div>
-          <div className={`project-description ${styles.projectDescriptionStyle}`}>{projectInfo.text}</div>
-          <div className={`project-tech-stack ${styles.techStackContainerStyle}`}>
-            {projectInfo.techStack.map((techName) => <TechStack key={techName} name={techName} />)}
-          </div>
+        <div className={`project-meta ${styles.featuredMetaStyle}`}>
+          <span>{projectInfo.year}</span>
+          <StatusBadge status={projectInfo.status} />
+        </div>
+        <h3 className={`project-name ${styles.featuredNameStyle}`}>
+          {projectInfo.name}
+          {projectInfo.href && (
+            <NorthEastIcon className='ml-1 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5' style={{ fontSize: '1rem' }} />
+          )}
+        </h3>
+        <div className={`project-role ${styles.featuredRoleStyle}`}>{projectInfo.role}</div>
+        <p className={`project-description ${styles.projectDescriptionStyle}`}>{projectInfo.summary}</p>
+        <div className={`project-tech-stack mt-auto ${styles.techStackContainerStyle}`}>
+          {projectInfo.techStack.map((techName) => <TechStack key={techName} name={techName} />)}
         </div>
       </>
     )
   };
 
-  const showRedirectSymbol = () => {
-    if (projectInfo.link) {
-      return (
-        <div className={`redirect-symbol ${symbolAnimate ? `animate-shake` : ``}`}>
-          <KeyboardDoubleArrowRightIcon />
-        </div>
-      )
-    }
-  };
-
-  const linkDoesNotExist = () => {
+  if (projectInfo.href) {
     return (
-      <div className={`project ${styles.projectIndividualStyle}`} >{constantSection()}</div>
+      <a className={cardStyle} href={projectInfo.href} target='_blank' rel='noopener noreferrer'>{constantSection()}</a>
     )
-  };
+  }
 
-  const linkDoesExist = () => {
-    return (
-      <a className={`project ${styles.projectIndividualStyle}`} href={projectInfo.redirectLink} target='_blank' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>{constantSection()}</a>
-    )
-  };
-
-  return projectInfo.link ? linkDoesExist() : linkDoesNotExist();
-
+  return (
+    <div className={cardStyle}>{constantSection()}</div>
+  )
 };
