@@ -6,12 +6,6 @@ export const experienceData = [
     text: 'Build and improved automated systems to quickly close items to expedite close out. Communicated with the team and the customers to clear bottlenecks.'
   },
   {
-    time: '2021 - Present',
-    position: 'Real Estate Agent',
-    name: 'eXp Realty & Keller Williams Realty',
-    text: 'Network and communicate with clients and real estate transaction team members (lawyers & lenders). Build programs to reduce significant time in marketing.'
-  },
-  {
     time: '2020 - 2022',
     position: 'Mechanical Design Engineer',
     name: 'Collins Aerospace',
