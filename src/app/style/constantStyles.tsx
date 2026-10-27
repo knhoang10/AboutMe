@@ -83,18 +83,28 @@ export const marqueeStyle = `py-1 font-mono text-[0.8rem] text-slate-300`;
 
 
 // Projects -----------------------------------
+// Only cards that go somewhere react to the pointer; the rest stay still, so a link is obvious
 export const featuredGridStyle = `grid gap-5 md:grid-cols-2`;
-export const featuredCardStyle = `reveal shine group flex flex-col gap-5 rounded-2xl p-6 sm:p-7 transition duration-300 hover:-translate-y-1`;
-export const featuredCardDefaultStyle = `card card-hover`;
-export const featuredCardFlagshipStyle = `sweep-border hover:shadow-glow-gold md:col-span-2`;
+export const featuredCardStyle = `reveal flex flex-col gap-5 rounded-2xl p-6 sm:p-7`;
+export const featuredCardStaticStyle = `card`;
+export const featuredCardLinkStyle = `group shine card card-hover hover:border-blue-400/50`;
+export const featuredCardFlagshipStyle = `sweep-border md:col-span-2`;
 // Full-width cards put the write-up and the stack side by side
 export const featuredWideBodyStyle = `flex flex-col gap-5 md:grid md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10`;
 export const featuredMetaStyle = `flex items-center justify-between gap-3`;
-export const featuredYearStyle = `font-mono text-xs font-medium tracking-wider text-slate-400`;
+export const featuredYearStyle = `font-mono text-sm font-semibold tracking-wider text-slate-200`;
 export const featuredNameStyle = `font-display text-xl font-bold tracking-tight text-white transition-colors group-hover:text-blue-200`;
 export const featuredRoleStyle = `mt-1 text-sm font-medium text-blue-300/90`;
 export const featuredSummaryStyle = `text-[0.95rem] ${bodyTextStyle} transition-colors group-hover:text-slate-300`;
 export const featuredStackLabelStyle = `${monoLabelStyle} mb-3 hidden text-[0.68rem] md:block`;
+// The footer a linked card gets: where it goes, and the animated arrow
+export const featuredLinkFooterStyle = `flex items-center justify-between gap-4 border-t border-white/[0.07] pt-4`;
+export const featuredLinkLabelStyle = `text-sm font-semibold text-blue-200 transition-colors group-hover:text-white`;
+export const featuredLinkHostStyle = `mt-0.5 block font-mono text-xs text-slate-400`;
+
+// Arrow button: blue ring at rest; on hover it fills and the arrow flies out as a new one slides in
+export const linkArrowStyle = `link-arrow h-9 w-9 shrink-0 rounded-full border border-blue-400/40 bg-blue-500/10 text-blue-200 transition-colors duration-300 group-hover:border-blue-500 group-hover:bg-blue-600 group-hover:text-white`;
+export const linkArrowSmallStyle = `link-arrow h-7 w-7 shrink-0 rounded-full border border-blue-400/40 bg-blue-500/10 text-blue-200 transition-colors duration-300 group-hover:border-blue-500 group-hover:bg-blue-600 group-hover:text-white`;
 
 // Status badges
 export const statusBadgeStyle = `inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[0.7rem] font-semibold`;
@@ -108,14 +118,15 @@ export const statusBadgeColors = {
 // Archive table
 export const archiveHeaderStyle = `reveal mt-6 flex items-baseline justify-between border-b border-white/10 pb-3`;
 export const archiveTitleStyle = `font-display text-lg font-bold text-white`;
-export const archiveCountStyle = `font-mono text-xs text-slate-500`;
+export const archiveCountStyle = `font-mono text-xs text-slate-400`;
 export const archiveItemStyle = `reveal border-b border-white/[0.06]`;
-export const archiveRowStyle = `group -mx-3 my-1 grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-x-4 rounded-xl px-3 py-4 transition-colors hover:bg-white/[0.035] sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:gap-x-6`;
-export const archiveYearStyle = `pt-1 font-mono text-xs text-slate-500`;
+export const archiveRowStyle = `-mx-3 my-1 grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-x-4 rounded-xl px-3 py-4 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:gap-x-6`;
+export const archiveRowLinkStyle = `group transition-colors hover:bg-blue-500/[0.06]`;
+export const archiveYearStyle = `pt-0.5 font-mono text-sm font-semibold text-slate-200`;
 export const archiveNameStyle = `font-display font-semibold text-white transition-colors group-hover:text-blue-200`;
 export const archiveSummaryStyle = `mt-1 text-sm ${bodyTextStyle}`;
-export const archiveStackStyle = `mt-2.5 font-mono text-[0.7rem] leading-relaxed text-gold-light/75`;
-export const archiveLinkStyle = `inline-flex items-center gap-1 pt-0.5 text-sm font-medium text-blue-300 transition-colors group-hover:text-gold-light`;
+export const archiveStackStyle = `mt-3`;
+export const archiveLinkStyle = `flex items-center gap-2 font-mono text-xs font-medium text-blue-200 transition-colors group-hover:text-white`;
 
 
 // Experience timeline -----------------------------------
@@ -123,7 +134,7 @@ export const timelineStyle = `flex max-w-3xl flex-col`;
 // The rail is each entry's left border, so it runs unbroken and stops at the last entry.
 // From sm up the dates move out to a column left of the rail.
 export const timelineItemStyle = `reveal relative border-l border-white/10 pb-12 pl-8 last:pb-0 sm:ml-[10.5rem]`;
-export const timelineTimeStyle = `mb-1.5 block font-mono text-xs uppercase tracking-wider text-slate-400 sm:absolute sm:right-[calc(100%+2rem)] sm:top-2 sm:mb-0 sm:w-[8.5rem] sm:text-right`;
+export const timelineTimeStyle = `mb-1.5 block font-mono text-[0.8rem] font-semibold uppercase tracking-wider text-slate-200 sm:absolute sm:right-[calc(100%+2rem)] sm:top-2 sm:mb-0 sm:w-[8.5rem] sm:text-right`;
 export const timelineDotStyle = `absolute -left-[5px] top-1 h-[9px] w-[9px] rounded-full sm:top-2.5`;
 export const timelineDotCurrentStyle = `bg-gold shadow-[0_0_0_4px_rgba(201,164,92,0.18)]`;
 export const timelineDotPastStyle = `bg-light-black ring-2 ring-slate-500`;
@@ -134,8 +145,8 @@ export const timelineTextStyle = `mt-3 ${bodyTextStyle}`;
 
 // Education -----------------------------------
 export const educationGridStyle = `grid gap-5 md:grid-cols-3`;
-export const educationCardStyle = `reveal shine card card-hover flex flex-col gap-3 p-6`;
-export const educationTimeStyle = `font-mono text-xs tracking-wider text-gold`;
+export const educationCardStyle = `reveal card flex flex-col gap-3 p-6`;
+export const educationTimeStyle = `font-mono text-sm font-semibold tracking-wider text-gold-light`;
 export const educationDegreeStyle = `font-display font-bold leading-snug text-white`;
 export const educationFieldStyle = `-mt-1 text-sm text-slate-400`;
 export const educationSchoolStyle = `text-sm font-medium text-blue-300`;
@@ -157,7 +168,23 @@ export const techStackContainerStyle = `flex flex-wrap gap-2`;
 export const techStackStyle = `
   rounded-full bg-gold/[0.12] px-2.5 py-1 text-xs font-medium text-gold-light ring-1 ring-inset ring-gold/40 transition-colors group-hover:bg-gold/[0.18]
 `;
-export const techStackMoreStyle = `rounded-full px-2.5 py-1 text-xs font-medium text-slate-400 ring-1 ring-inset ring-white/15`;
+
+// Resume -----------------------------------
+// White paper on screen; in print the sheet's padding gives way to the @page margins
+export const resumePageStyle = `min-h-screen px-4 py-10 print:p-0`;
+export const resumeToolbarStyle = `mx-auto mb-6 flex max-w-[8.5in] items-center justify-between gap-4 print:hidden`;
+export const resumeBackStyle = `font-mono text-sm text-slate-300 transition-colors hover:text-white`;
+export const resumeSheetStyle = `mx-auto max-w-[8.5in] rounded-sm bg-white font-[Arial,Helvetica,sans-serif] px-6 py-8 text-[10pt] leading-snug text-slate-700 shadow-2xl sm:px-[0.6in] sm:py-[0.55in] print:max-w-none print:rounded-none print:!p-0 print:shadow-none`;
+export const resumeNameStyle = `text-[22pt] font-bold leading-tight text-slate-900`;
+export const resumeTitleStyle = `text-[12pt] font-medium text-blue-800`;
+export const resumeContactStyle = `mt-1.5 flex flex-wrap text-[8.5pt] text-slate-700`;
+export const resumeSectionStyle = `mt-4 first-of-type:mt-0`;
+export const resumeHeadingStyle = `mb-2 border-b border-slate-300 pb-1 text-[10.5pt] font-bold uppercase text-slate-900`;
+export const resumeEntryStyle = `mb-2.5 break-inside-avoid last:mb-0`;
+export const resumeEntryHeadStyle = `flex flex-wrap items-baseline justify-between gap-x-4`;
+export const resumeEntryTitleStyle = `font-semibold text-slate-900`;
+export const resumeDateStyle = `shrink-0 text-slate-600`;
+export const resumeBulletsStyle = `mt-0.5 list-disc pl-5`;
 
 // Material UI
 export const muiIconStyle = { fontSize: '2rem' };

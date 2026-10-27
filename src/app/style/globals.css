@@ -163,6 +163,54 @@
   50% { opacity: 0; }
 }
 
+/* The arrow on anything that links out. At rest it nudges toward its destination every few
+   seconds; on hover or keyboard focus it flies out and a fresh arrow slides in behind it. */
+.link-arrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.link-arrow svg {
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.link-arrow .link-arrow-out {
+  animation: nudge 3.6s ease-in-out infinite;
+}
+.link-arrow .link-arrow-in {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform: translate(-160%, 160%);
+}
+.group:hover .link-arrow .link-arrow-out,
+.group:focus-visible .link-arrow .link-arrow-out {
+  animation: none;
+  transform: translate(160%, -160%);
+}
+.group:hover .link-arrow .link-arrow-in,
+.group:focus-visible .link-arrow .link-arrow-in {
+  transform: none;
+}
+@keyframes nudge {
+  0%, 70%, 100% { transform: none; }
+  80% { transform: translate(2px, -2px); }
+  90% { transform: none; }
+}
+
+/* The resume prints on Letter paper with real margins and no dark background. */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in 0.6in;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+}
+
 /* Staggered entrance; the delay is set inline. */
 .rise {
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;

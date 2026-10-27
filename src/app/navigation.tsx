@@ -8,7 +8,6 @@ import { sectionData } from './data/sectionData';
 // MUI Framework
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
 
 // Styling
 import * as styles from './style/constantStyles';
@@ -87,9 +86,7 @@ export default function Navigation () {
         </ul>
 
         <div className='flex items-center gap-2'>
-          <a href={siteData.resume} target='_blank' rel='noopener noreferrer' className={styles.navResumeStyle}>
-            Resume<NorthEastIcon style={{ fontSize: '0.85rem' }} />
-          </a>
+          <a href={siteData.resume} className={styles.navResumeStyle}>Resume</a>
           <button
             type='button'
             className={styles.navMenuButtonStyle}

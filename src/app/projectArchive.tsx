@@ -1,11 +1,8 @@
 // Components
-import { StatusBadge } from './reuseableComponents/reuseableComponents';
+import { StatusBadge, TechStackList, LinkArrow } from './reuseableComponents/reuseableComponents';
 
 // Data
 import { ProjectInfo } from './data/projectData';
-
-// MUI Framework
-import NorthEastIcon from '@mui/icons-material/NorthEast';
 
 // Styling
 import * as styles from './style/constantStyles';
@@ -26,13 +23,15 @@ export default function ProjectArchive({ projects }: ProjectArchiveProps) {
       <div className='min-w-0'>
         <div className={styles.archiveNameStyle}>{project.name}</div>
         <p className={styles.archiveSummaryStyle}>{project.summary}</p>
-        <p className={styles.archiveStackStyle}>{project.techStack.join(' · ')}</p>
+        <div className={styles.archiveStackStyle}>
+          <TechStackList names={project.techStack} />
+        </div>
       </div>
       <div className='flex justify-end'>
         {project.href ? (
           <span className={styles.archiveLinkStyle}>
-            {project.href.includes('github.com') ? 'Code' : 'Visit'}
-            <NorthEastIcon className='transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5' style={{ fontSize: '0.9rem' }} />
+            <span className='hidden sm:inline'>{project.href.includes('github.com') ? 'Code' : 'Visit'}</span>
+            <LinkArrow small />
           </span>
         ) : (
           <StatusBadge status={project.status} />
@@ -51,7 +50,7 @@ export default function ProjectArchive({ projects }: ProjectArchiveProps) {
         {sortedProjects.map((project) => (
           <li key={project.name} className={styles.archiveItemStyle}>
             {project.href ? (
-              <a className={`archive-row ${styles.archiveRowStyle}`} href={project.href} target='_blank' rel='noopener noreferrer'>{row(project)}</a>
+              <a className={`archive-row ${styles.archiveRowStyle} ${styles.archiveRowLinkStyle}`} href={project.href} target='_blank' rel='noopener noreferrer' aria-label={`${project.name} (${project.href.includes('github.com') ? 'code' : 'live site'}, opens in a new tab)`}>{row(project)}</a>
             ) : (
               <div className={`archive-row ${styles.archiveRowStyle}`}>{row(project)}</div>
             )}

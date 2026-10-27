@@ -4,6 +4,9 @@ import { ReactNode } from 'react';
 // Style
 import * as styles from '../style/constantStyles';
 
+// MUI Framework
+import NorthEastIcon from '@mui/icons-material/NorthEast';
+
 // Data
 import { ProjectStatus } from '../data/projectData';
 import { SectionId, sectionTitle } from '../data/sectionData';
@@ -113,25 +116,32 @@ export function TechStack({ name }: TechStackProps) {
   )
 };
 
-// A row of tech pills. Past `limit`, the rest fold into a "+N" chip that still names them for screen readers and on hover.
+// A row of tech pills, every one shown
 type TechStackListProps = {
   names: string[];
-  limit?: number;
 };
 
-export function TechStackList({ names, limit = names.length }: TechStackListProps) {
-  const shown = names.slice(0, limit);
-  const folded = names.slice(limit);
+export function TechStackList({ names }: TechStackListProps) {
   return (
     <div className={styles.techStackContainerStyle}>
-      {shown.map((techName) => <TechStack key={techName} name={techName} />)}
-      {folded.length > 0 && (
-        <div className={styles.techStackMoreStyle} title={folded.join(', ')}>
-          <span aria-hidden>+{folded.length}</span>
-          <span className='sr-only'>{folded.join(', ')}</span>
-        </div>
-      )}
+      {names.map((techName) => <TechStack key={techName} name={techName} />)}
     </div>
+  )
+};
+
+// Link Arrow: the cue that a card or row goes somewhere. Animated by .link-arrow in globals.css
+// when its `group` parent is hovered or focused.
+type LinkArrowProps = {
+  small?: boolean;
+};
+
+export function LinkArrow({ small = false }: LinkArrowProps) {
+  const iconStyle = { fontSize: small ? '0.85rem' : '1rem' };
+  return (
+    <span className={small ? styles.linkArrowSmallStyle : styles.linkArrowStyle} aria-hidden>
+      <NorthEastIcon className='link-arrow-out' style={iconStyle} />
+      <NorthEastIcon className='link-arrow-in' style={iconStyle} />
+    </span>
   )
 };
 

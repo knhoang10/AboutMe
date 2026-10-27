@@ -15,6 +15,7 @@ export const siteData = {
   phoneTel: '+18606822251',
   github: 'https://github.com/knhoang10',
   linkedin: 'https://www.linkedin.com/in/knhoangre/',
-  resume: 'https://drive.google.com/file/d/1DDo1BzYQkYhMWH0VogBXw1_CRibEKn0y/view?usp=sharing',
+  // The hosted resume page; its PDF lives at resumeData.pdfPath
+  resume: '/resume',
   headshot: '/headshot.webp',
 };
