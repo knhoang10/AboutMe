@@ -15,6 +15,8 @@ export type ProjectInfo = {
   featured?: boolean,
   flagship?: boolean,
   href?: string,
+  // The case study's URL segment (/projects/<slug>); its text lives in caseStudyData
+  slug?: string,
 };
 
 export const projectData: ProjectInfo[] = [
@@ -23,6 +25,7 @@ export const projectData: ProjectInfo[] = [
     year: '2026',
     role: 'Founder & Full-Stack Engineer',
     name: 'Real-Estate Transaction Platform',
+    slug: 'real-estate-transaction-platform',
     summary: 'A full-stack product built from the ground up: pre-rendered marketing pages for speed and SEO, secure accounts, Stripe checkout, legally binding e-signatures, generated PDF documents, and transactional email, all backed by serverless edge functions. Runs on a fully containerized local stack that mirrors production.',
     techStack: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Edge Functions', 'Stripe', 'Resend', 'pdf-lib', 'Zod', 'Docker'],
     status: 'stealth',
@@ -33,6 +36,7 @@ export const projectData: ProjectInfo[] = [
     year: '2026',
     role: 'Founder & Full-Stack Engineer',
     name: 'Marketing Automation SaaS',
+    slug: 'marketing-automation-saas',
     summary: 'A multi-service SaaS that turns raw inputs into finished, on-brand media and publishes it on a schedule. Six containerized services (web app, job queue, headless-browser renderer, video renderer, scheduler and database) with subscriptions, OAuth sign-in, and AI-assisted copy.',
     techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Redis', 'BullMQ', 'Puppeteer', 'Remotion', 'Stripe', 'NextAuth', 'Claude API', 'Docker'],
     status: 'stealth',
@@ -42,6 +46,7 @@ export const projectData: ProjectInfo[] = [
     year: '2026',
     role: 'Creator & Full-Stack Engineer',
     name: 'Punch List',
+    slug: 'punch-list',
     summary: 'An offline-first business app for independent tradespeople: jobs, estimates, invoices and receipts that keep working with zero signal. Data lives on the device and syncs to the cloud when a connection returns; print-ready PDFs are rendered right on the phone.',
     techStack: ['React', 'TypeScript', 'Vite', 'IndexedDB', 'Dexie', 'Supabase', 'pdf-lib', 'PDF.js', 'PWA'],
     status: 'live',
@@ -52,6 +57,7 @@ export const projectData: ProjectInfo[] = [
     year: '2025',
     role: 'Full-Stack Engineer',
     name: 'kevinhoang.co',
+    slug: 'kevinhoang-co',
     summary: 'A multilingual, pre-rendered brand site for my real-estate business with a built-in CRM, lead capture, and analytics dashboards. 150+ commits of continuous iteration on performance, SEO, and conversion.',
     techStack: ['React', 'TypeScript', 'Vite', 'SSG', 'Tailwind CSS', 'shadcn/ui', 'Supabase', 'Framer Motion', 'i18next', 'Recharts'],
     status: 'live',
@@ -62,6 +68,7 @@ export const projectData: ProjectInfo[] = [
     year: '2025',
     role: 'Software Engineer',
     name: 'Algorithmic Trading Engine',
+    slug: 'algorithmic-trading-engine',
     summary: 'A regime-aware swing-trading system that scans a stock and ETF universe daily, sizes and places orders through a brokerage API, journals every decision, and grades its own results each month. Built around a survivorship-bias-free backtesting harness: honest validation over flattering numbers.',
     techStack: ['Python', 'pandas', 'NumPy', 'PyArrow', 'Pydantic', 'APScheduler', 'Alpaca API', 'Matplotlib', 'Docker'],
     status: 'private',
@@ -71,6 +78,7 @@ export const projectData: ProjectInfo[] = [
     year: '2026',
     role: 'Full-Stack Engineer',
     name: 'Personal Finance Platform',
+    slug: 'personal-finance-platform',
     summary: 'A self-hosted app that replaces a yearly budgeting spreadsheet. Bank feeds sync automatically, transactions are cleaned and auto-categorized, and dashboards cover budgets, savings, and taxes. Deployed with Docker on a home server behind a VPN, with automated off-site backups.',
     techStack: ['Python', 'FastAPI', 'SQLAlchemy', 'Alembic', 'Plaid API', 'React', 'TypeScript', 'TanStack Query', 'Recharts', 'Docker'],
     status: 'private',
@@ -191,3 +199,10 @@ export const projectData: ProjectInfo[] = [
 
 export const featuredProjects = projectData.filter((project) => project.featured);
 export const archivedProjects = projectData.filter((project) => !project.featured);
+
+// Every technology across all projects, most used first
+const techCounts = projectData.flatMap((project) => project.techStack).reduce<Record<string, number>>((counts, tech) => {
+  counts[tech] = (counts[tech] || 0) + 1;
+  return counts;
+}, {});
+export const rankedTech = Object.keys(techCounts).sort((a, b) => techCounts[b] - techCounts[a]);

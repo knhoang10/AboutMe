@@ -4,19 +4,21 @@ import './style/globals.css';
 
 // Personal Data
 import { siteData } from './data/siteData';
-import { projectData } from './data/projectData';
+
+// SEO
+import { siteGraph, JsonLd } from './seo';
 
 // Fonts (self-hosted by Next at build time)
 const displayFont = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const monoFont = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
-const title = `${siteData.name} | ${siteData.jobTitle}`;
-
+// Site-wide defaults. Each page sets its own title, description, and canonical with pageMetadata.
 export const metadata: Metadata = {
   metadataBase: new URL(siteData.url),
-  title,
+  title: `${siteData.name} | ${siteData.jobTitle}`,
   description: siteData.description,
-  alternates: { canonical: '/' },
+  authors: [{ name: siteData.name, url: siteData.url }],
+  creator: siteData.name,
   icons: {
     icon: [
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -24,37 +26,6 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
-  openGraph: {
-    type: 'profile',
-    url: '/',
-    title,
-    description: siteData.description,
-    siteName: `${siteData.name} Portfolio`,
-    images: [{ url: '/headshot.png', width: 750, height: 750, alt: `Portrait of ${siteData.name}` }],
-  },
-  twitter: {
-    card: 'summary',
-    title,
-    description: siteData.description,
-    images: ['/headshot.png'],
-  },
-};
-
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${siteData.url}/#person`,
-  name: siteData.name,
-  url: siteData.url,
-  image: `${siteData.url}/headshot.png`,
-  jobTitle: siteData.jobTitle,
-  email: `mailto:${siteData.email}`,
-  sameAs: [ siteData.github, siteData.linkedin ],
-  alumniOf: [
-    { '@type': 'CollegeOrUniversity', name: 'University of Connecticut' },
-    { '@type': 'EducationalOrganization', name: 'Hack Reactor' },
-  ],
-  knowsAbout: Array.from(new Set(projectData.flatMap((project) => project.techStack))),
 };
 
 export default function RootLayout({
@@ -65,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${displayFont.variable} ${monoFont.variable}`}>
       <body>
-        <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+        <JsonLd data={siteGraph} />
         {children}
       </body>
     </html>

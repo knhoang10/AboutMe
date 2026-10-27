@@ -8,7 +8,7 @@ import Image from 'next/image';
 // Personal Data
 import { siteData } from './data/siteData';
 import { aboutMeData } from './data/aboutMeData';
-import { projectData, featuredProjects, archivedProjects } from './data/projectData';
+import { projectData, featuredProjects, archivedProjects, rankedTech } from './data/projectData';
 import { educationData } from './data/educationData';
 import { experienceData } from './data/experienceData';
 import { connectWithMeData } from './data/connectWithMeData';
@@ -21,7 +21,7 @@ import Education from './education';
 import Navigation from './navigation';
 import Marquee from './reuseableComponents/marquee';
 import CountUp from './reuseableComponents/countUp';
-import { ButtonStyle, PageSection, TerminalWindow, TerminalLine } from './reuseableComponents/reuseableComponents';
+import { ButtonStyle, PageSection, TerminalWindow, TerminalLine, SiteFooter } from './reuseableComponents/reuseableComponents';
 import useReveal from './hooks/useReveal';
 
 // Styling
@@ -50,11 +50,7 @@ const stats = [
 ];
 
 // The most-used technologies across every project, most frequent first
-const techCounts = projectData.flatMap((project) => project.techStack).reduce<Record<string, number>>((counts, tech) => {
-  counts[tech] = (counts[tech] || 0) + 1;
-  return counts;
-}, {});
-const topTech = Object.keys(techCounts).sort((a, b) => techCounts[b] - techCounts[a]).slice(0, 20);
+const topTech = rankedTech.slice(0, 20);
 
 // The About terminal prints real data: current roles and the most-used stack
 const currentRoles = experienceData.filter((experience) => experience.time.includes('Present'));
@@ -112,8 +108,8 @@ export default function TransitionPage() {
               <ButtonStyle text='View projects' className='projects-button' redirectLink='#projects' variant='primary' />
               <ButtonStyle text='Get in touch' className='contact-button' redirectLink='#contact' />
               <div className={`social-media ${styles.socialMediaSectionStyle}`}>
-                <a href={siteData.github} target='_blank' rel='noopener noreferrer' aria-label='GitHub' className={`github-icon ${styles.iconStyle}`}><GitHubIcon style={styles.muiIconStyle} /></a>
-                <a href={siteData.linkedin} target='_blank' rel='noopener noreferrer' aria-label='LinkedIn' className={`linkedin-icon ${styles.iconStyle}`}><LinkedInIcon style={styles.muiIconStyle} /></a>
+                <a href={siteData.github} target='_blank' rel='me noopener noreferrer' aria-label='GitHub' className={`github-icon ${styles.iconStyle}`}><GitHubIcon style={styles.muiIconStyle} /></a>
+                <a href={siteData.linkedin} target='_blank' rel='me noopener noreferrer' aria-label='LinkedIn' className={`linkedin-icon ${styles.iconStyle}`}><LinkedInIcon style={styles.muiIconStyle} /></a>
               </div>
             </div>
           </div>
@@ -198,11 +194,9 @@ export default function TransitionPage() {
             <a className={styles.connectEmailStyle} href={`mailto:${siteData.email}`}>{siteData.email}</a>
           </div>
         </PageSection>
-
-        <footer className='font-mono text-[0.7rem] text-slate-500'>
-          Designed &amp; built by {siteData.name} with Next.js, Tailwind CSS, and Vercel.
-        </footer>
       </main>
+
+      <SiteFooter />
     </div>
   )
 };

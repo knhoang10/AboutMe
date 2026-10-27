@@ -169,6 +169,35 @@ export const techStackStyle = `
   rounded-full bg-gold/[0.12] px-2.5 py-1 text-xs font-medium text-gold-light ring-1 ring-inset ring-gold/40 transition-colors group-hover:bg-gold/[0.18]
 `;
 
+// Case study -----------------------------------
+// A narrower column than the home page, for reading
+export const articleContainerStyle = `mx-auto w-full max-w-3xl px-6`;
+export const caseStudyBarStyle = `${containerStyle} flex h-16 items-center justify-between gap-4`;
+export const caseStudyBarLinksStyle = `flex items-center gap-5`;
+export const caseStudyMainStyle = `${articleContainerStyle} flex flex-col gap-14 pb-20 pt-6`;
+export const breadcrumbStyle = `flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-slate-400`;
+export const breadcrumbLinkStyle = `transition-colors hover:text-white`;
+export const caseStudyHeaderStyle = `rise flex flex-col items-start gap-5`;
+export const caseStudyTitleStyle = `font-display text-4xl font-extrabold tracking-tight text-gradient-name sm:text-5xl`;
+export const caseStudyRoleStyle = `-mt-2 font-medium text-blue-300`;
+export const caseStudyIntroStyle = `text-lg leading-relaxed text-slate-200`;
+export const caseStudyBodyStyle = `flex flex-col gap-12`;
+export const caseStudySectionStyle = `flex flex-col gap-4`;
+export const caseStudyHeadingStyle = `font-display text-xl font-bold tracking-tight text-white sm:text-2xl`;
+export const caseStudyBulletsStyle = `flex list-disc flex-col gap-2 pl-5 marker:text-gold ${bodyTextStyle}`;
+export const caseStudyPagerStyle = `grid gap-4 sm:grid-cols-2`;
+export const caseStudyPagerCardStyle = `group card card-hover flex flex-col gap-1 p-5`;
+export const caseStudyPagerNextStyle = `sm:col-start-2 sm:text-right`;
+export const caseStudyPagerNameStyle = `font-display font-semibold text-white transition-colors group-hover:text-blue-200`;
+
+
+// Site footer -----------------------------------
+export const siteFooterStyle = `${containerStyle} flex flex-col gap-8 border-t border-white/[0.07] pb-12 pt-10 print:hidden`;
+export const siteFooterNavStyle = `grid gap-8 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]`;
+export const siteFooterListStyle = `mt-3 flex flex-col gap-2 text-sm`;
+export const siteFooterLinkStyle = `text-slate-300 transition-colors hover:text-white`;
+export const siteFooterNoteStyle = `font-mono text-[0.7rem] text-slate-500`;
+
 // Resume -----------------------------------
 // White paper on screen; in print the sheet's padding gives way to the @page margins
 export const resumePageStyle = `min-h-screen px-4 py-10 print:p-0`;

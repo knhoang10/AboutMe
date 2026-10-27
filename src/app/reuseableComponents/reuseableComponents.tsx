@@ -10,6 +10,8 @@ import NorthEastIcon from '@mui/icons-material/NorthEast';
 // Data
 import { ProjectStatus } from '../data/projectData';
 import { SectionId, sectionTitle } from '../data/sectionData';
+import { siteData } from '../data/siteData';
+import { caseStudyProjects, caseStudyPath } from '../data/caseStudyData';
 
 
 // Button
@@ -164,5 +166,45 @@ export function StatusBadge({ status }: { status: ProjectStatus }) {
       )}
       {statusLabels[status]}
     </span>
+  )
+};
+
+// Site Footer: rendered on every page, so it is the site's crawlable link graph. Every case
+// study gets an inbound link from every page here, as a plain anchor in the served HTML.
+const footerLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Resume', href: siteData.resume },
+  { label: 'GitHub', href: siteData.github, rel: 'me noopener noreferrer' },
+  { label: 'LinkedIn', href: siteData.linkedin, rel: 'me noopener noreferrer' },
+  { label: 'Email', href: `mailto:${siteData.email}` },
+];
+
+export function SiteFooter() {
+  return (
+    <footer className={styles.siteFooterStyle}>
+      <nav className={styles.siteFooterNavStyle} aria-label='Footer'>
+        <div>
+          <div className={styles.monoLabelStyle}>Case studies</div>
+          <ul className={styles.siteFooterListStyle}>
+            {caseStudyProjects.map((project) => (
+              <li key={project.slug}><a href={caseStudyPath(project.slug)} className={styles.siteFooterLinkStyle}>{project.name}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <div className={styles.monoLabelStyle}>{siteData.name}</div>
+          <ul className={styles.siteFooterListStyle}>
+            {footerLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className={styles.siteFooterLinkStyle} {...(link.rel ? { rel: link.rel, target: '_blank' } : {})}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+      <p className={styles.siteFooterNoteStyle}>
+        {siteData.name}, {siteData.jobTitle.toLowerCase()} in {siteData.location}. {siteData.availability}. Designed &amp; built with Next.js, Tailwind CSS, and Vercel.
+      </p>
+    </footer>
   )
 };

@@ -10,28 +10,23 @@ import { experienceData } from '../data/experienceData';
 import { educationData } from '../data/educationData';
 import { featuredProjects } from '../data/projectData';
 
+// Components
+import { SiteFooter } from '../reuseableComponents/reuseableComponents';
+
+// SEO
+import { pageMetadata } from '../seo';
+
 // Styling
 import * as styles from '../style/constantStyles';
 
 
 // A plain, single-column resume: real text in standard sections, so applicant tracking
 // systems and search engines can read it. The PDF is this page printed (npm run resume:pdf).
-const title = `Resume | ${siteData.name}, ${siteData.jobTitle}`;
-const description = `Resume of ${siteData.name}, ${siteData.jobTitle}: skills, experience, projects, and education.`;
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/resume' },
-  openGraph: {
-    type: 'profile',
-    url: '/resume',
-    title,
-    description,
-    siteName: `${siteData.name} Portfolio`,
-    images: [{ url: '/headshot.png', width: 750, height: 750, alt: `Portrait of ${siteData.name}` }],
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: `Resume | ${siteData.name}, ${siteData.jobTitle}`,
+  description: `Resume of ${siteData.name}, ${siteData.jobTitle.toLowerCase()} in ${siteData.location}, open to remote roles: skills, experience, projects, and education.`,
+  path: '/resume',
+});
 
 // Helpers
 const displayUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
@@ -41,12 +36,14 @@ const sentences = (text: string) => text.split(/(?<=\.)\s+/).filter(Boolean);
 // Newest first; projects from the same year keep their portfolio order
 const resumeProjects = [ ...featuredProjects ].sort((a, b) => Number(b.year) - Number(a.year));
 
+// The profile links carry rel="me": they are the same person as this site
 const contactItems = [
+  { label: `${siteData.location} · Open to remote` },
   { label: siteData.email, href: `mailto:${siteData.email}` },
   { label: siteData.phoneDisplay, href: `tel:${siteData.phoneTel}` },
   { label: displayUrl(siteData.url), href: siteData.url },
-  { label: displayUrl(siteData.github), href: siteData.github },
-  { label: displayUrl(siteData.linkedin), href: siteData.linkedin },
+  { label: displayUrl(siteData.github), href: siteData.github, rel: 'me' },
+  { label: displayUrl(siteData.linkedin), href: siteData.linkedin, rel: 'me' },
 ];
 
 function ResumeSection({ title, children }: { title: string, children: ReactNode }) {
@@ -74,7 +71,7 @@ export default function ResumePage() {
             {contactItems.map((item, index) => (
               <span key={item.label}>
                 {index > 0 && <span className='px-1.5 text-slate-400'>|</span>}
-                <a href={item.href} className='hover:underline'>{item.label}</a>
+                {item.href ? <a href={item.href} rel={item.rel} className='hover:underline'>{item.label}</a> : item.label}
               </span>
             ))}
           </p>
@@ -136,6 +133,10 @@ export default function ResumePage() {
           ))}
         </ResumeSection>
       </article>
+
+      <div className='mt-16 print:hidden'>
+        <SiteFooter />
+      </div>
     </div>
   )
 };
