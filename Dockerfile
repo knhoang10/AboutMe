@@ -1,6 +1,6 @@
 # Development image: runs `next dev` with hot reloading.
 # docker-compose.yml mounts the source in, so edits show up without a rebuild.
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Next.js's SWC binaries need glibc compatibility on Alpine
 RUN apk add --no-cache libc6-compat
