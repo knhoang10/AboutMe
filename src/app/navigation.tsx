@@ -16,24 +16,23 @@ export default function Navigation () {
   useEffect(() => {
     const handleScroll = () => {
       const sectionNodes = document.querySelectorAll('section');
-      let offsets = Array.from(sectionNodes).map((node, index2) => ({
-        index: Number(node.getAttribute('data-index')),
 
-        // Change the last section to have a lower point to make sure that the navigation changes
-        offset: index2 !== sections.length - 1 ? node.offsetTop : node.offsetTop - window.innerHeight / 2.5,
-      }));
+      // The active section is the last one whose top has passed the upper third of the screen
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      let activeIndex = 0;
+      sectionNodes.forEach((node, index) => {
+        if (node.offsetTop <= scrollPosition) activeIndex = index;
+      });
 
-      // When section reaches half way then change navigation
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      // Change index if scroll position is greater or less than the section position
-      const activeIndex = offsets.findIndex(offset => offset.offset > scrollPosition) - 1;
+      // The last section can be too short to reach that line, so reaching the bottom of the page selects it
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
 
       // Update the section index
-      setActiveSectionIndex(activeIndex === -2 ? sections.length - 1 : activeIndex);
+      setActiveSectionIndex(atBottom ? sections.length - 1 : activeIndex);
     };
 
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Referencing

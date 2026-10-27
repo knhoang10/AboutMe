@@ -53,10 +53,10 @@
   }
 
   .card {
-    @apply rounded-2xl border border-white/[0.06] bg-white/[0.025] transition duration-300;
+    @apply rounded-2xl border border-white/[0.07] bg-gradient-to-b from-white/[0.045] to-white/[0.015] transition duration-300;
   }
   .card-hover {
-    @apply hover:-translate-y-1 hover:border-blue-400/30 hover:bg-white/[0.045] hover:shadow-glow-blue;
+    @apply hover:-translate-y-1 hover:border-blue-400/30 hover:from-white/[0.07] hover:shadow-glow-blue;
   }
 
   /* The flagship project: a blue-and-gold line that travels round its border. */
@@ -100,6 +100,14 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at 30% 20%, black 20%, transparent 70%);
+  }
+
+  /* The contact panel: a blue light from one corner, a gold one from the other. */
+  .cta-panel {
+    background:
+      radial-gradient(520px circle at 0% 0%, rgba(29, 78, 216, 0.28), transparent 65%),
+      radial-gradient(420px circle at 100% 100%, rgba(201, 164, 92, 0.14), transparent 65%),
+      #161d24;
   }
 
   /* Follows the mouse on desktop; transitionPage sets --spot-x / --spot-y. */

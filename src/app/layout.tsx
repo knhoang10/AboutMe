@@ -1,9 +1,14 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './style/globals.css';
 
 // Personal Data
 import { siteData } from './data/siteData';
 import { projectData } from './data/projectData';
+
+// Fonts (self-hosted by Next at build time)
+const displayFont = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
+const monoFont = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
 const title = `${siteData.name} | ${siteData.jobTitle}`;
 
@@ -58,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${displayFont.variable} ${monoFont.variable}`}>
       <body>
         <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         {children}

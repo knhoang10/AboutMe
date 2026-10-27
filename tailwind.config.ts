@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config: Config = {
   content: [
@@ -8,6 +9,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Body text keeps the system font; headings and labels get their own faces (loaded in layout.tsx)
+      fontFamily: {
+        display: ['var(--font-display)', ...defaultTheme.fontFamily.sans],
+        mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         'light-black': '#141a1f',
         'card': '#161d24',

@@ -21,7 +21,7 @@ import Education from './education';
 import TransitionToSection from './navigation';
 import Marquee from './reuseableComponents/marquee';
 import CountUp from './reuseableComponents/countUp';
-import { ButtonStyle } from './reuseableComponents/reuseableComponents';
+import { ButtonStyle, SectionHeader } from './reuseableComponents/reuseableComponents';
 import useReveal from './hooks/useReveal';
 
 // Styling
@@ -43,6 +43,11 @@ const projectCount = projectData.length;
 const liveCount = projectData.filter((project) => project.status === 'live').length;
 const firstEngineeringYear = Math.min(...experienceData.map((experience) => Number(experience.time.slice(0, 4))));
 const yearsEngineering = new Date().getFullYear() - firstEngineeringYear;
+const stats = [
+  { value: projectCount, label: 'Projects' },
+  { value: liveCount, label: 'Live today' },
+  { value: yearsEngineering, label: 'Years engineering', suffix: '+' },
+];
 
 // The most-used technologies across every project, most frequent first
 const techCounts = projectData.flatMap((project) => project.techStack).reduce<Record<string, number>>((counts, tech) => {
@@ -68,17 +73,6 @@ export default function TransitionPage() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  // Header
-  const headerTitle = (titleName: string) => {
-    return (
-      <div className="reveal flex items-center gap-6 w-full">
-        <div className={styles.sectionRuleLeftStyle}></div>
-        <h2 className={styles.newSectionTitle}>{titleName}</h2>
-        <div className={styles.sectionRuleRightStyle}></div>
-      </div>
-    )
-  };
 
   return (
     <div className={`page ${styles.pageStyle}`}>
@@ -120,29 +114,25 @@ export default function TransitionPage() {
         <main className={`right-section ${styles.rightSectionStyle}`}>
 
           {/* About Me Section */}
-          <section className={`about-section rise ${styles.aboutSectionStyle}`} style={riseDelay(3)}>
-            {headerTitle('ABOUT ME')}
-            {aboutMeData.map((aboutMe, index) => <p key={index} className={`about-me-detail ${styles.textGutterStyle}`}>{aboutMe.text}</p>)}
+          <section className={`about-section rise ${styles.sectionStyle}`} style={riseDelay(3)}>
+            <SectionHeader index={1} title='About Me' />
+            <div className='flex flex-col gap-5'>
+              {aboutMeData.map((aboutMe, index) => <p key={index} className={`about-me-detail ${index === 0 ? styles.aboutLeadStyle : styles.aboutTextStyle}`}>{aboutMe.text}</p>)}
+            </div>
             <div className={`stats ${styles.statsGridStyle}`}>
-              <div className={styles.statCardStyle}>
-                <span className={styles.statValueStyle}><CountUp value={projectCount} /></span>
-                <span className={styles.statLabelStyle}>Projects</span>
-              </div>
-              <div className={styles.statCardStyle}>
-                <span className={styles.statValueStyle}><CountUp value={liveCount} /></span>
-                <span className={styles.statLabelStyle}>Live today</span>
-              </div>
-              <div className={styles.statCardStyle}>
-                <span className={styles.statValueStyle}><CountUp value={yearsEngineering} suffix='+' /></span>
-                <span className={styles.statLabelStyle}>Years engineering</span>
-              </div>
+              {stats.map((stat) => (
+                <div key={stat.label} className={styles.statCardStyle}>
+                  <span className={styles.statValueStyle}><CountUp value={stat.value} suffix={stat.suffix} /></span>
+                  <span className={styles.statLabelStyle}>{stat.label}</span>
+                </div>
+              ))}
             </div>
             <Marquee items={topTech} />
           </section>
 
           {/* Project Section */}
-          <section className={`projects ${styles.projectSectionStyle}`}>
-            {headerTitle('PROJECTS')}
+          <section className={`projects ${styles.sectionStyle}`}>
+            <SectionHeader index={2} title='Projects' />
             <div className={`featured-projects ${styles.featuredGridStyle}`}>
               {featuredProjects.map((project, index) => <Project key={project.name} projectInfo={project} wide={index === featuredProjects.length - 1 && fillsLastRowAlone} />)}
             </div>
@@ -150,29 +140,37 @@ export default function TransitionPage() {
           </section>
 
           {/* Experience Section */}
-          <section className={`experiences ${styles.experienceSectionStyle}`}>
-            {headerTitle('EXPERIENCE')}
-            {experienceData.map((experience, index) => <Experience key={index} experienceInfo={experience} />)}
+          <section className={`experiences ${styles.sectionStyle}`}>
+            <SectionHeader index={3} title='Experience' />
+            <ol className={styles.timelineStyle}>
+              {experienceData.map((experience, index) => <Experience key={index} experienceInfo={experience} />)}
+            </ol>
           </section>
 
           {/* Education Section */}
-          <section className={`educations ${styles.educationSectionStyle}`}>
-            {headerTitle('EDUCATION')}
-            {educationData.map((education, index) => <Education key={index} educationInfo={education} />)}
-          </section>
-
-          {/* Connect With Me Section */}
-          <section className={`connect-with-me-section ${styles.connectSectionStyle}`}>
-            {headerTitle('CONNECT WITH ME!')}
-            {connectWithMeData.map((connectWithMe, index) => <p key={index} className={`reveal connect-with-me-detail`}>{connectWithMe.text}</p>)}
-            <div className={`reveal redirect-buttons flex flex-row flex-wrap gap-4 pt-2`}>
-              <ButtonStyle text='Email' className='email-redirect-button' redirectLink={`mailto:${siteData.email}`} variant='primary' />
-              <ButtonStyle text='Call' className='call-redirect-button' redirectLink={`tel:${siteData.phoneTel}`} />
-              <ButtonStyle text='Resume' className='resume-redirect-button' redirectLink={siteData.resume} />
+          <section className={`educations ${styles.sectionStyle}`}>
+            <SectionHeader index={4} title='Education' />
+            <div className={styles.educationGridStyle}>
+              {educationData.map((education, index) => <Education key={index} educationInfo={education} />)}
             </div>
           </section>
 
-          <footer className={`${styles.textGutterStyle} text-xs text-slate-500`}>
+          {/* Connect With Me Section */}
+          <section className={`connect-with-me-section ${styles.sectionStyle}`}>
+            <SectionHeader index={5} title='Connect With Me' />
+            <div className={`connect-panel ${styles.connectPanelStyle}`}>
+              <p className={styles.connectHeadingStyle}>{connectWithMeData.heading}</p>
+              <p className={`connect-with-me-detail ${styles.connectTextStyle}`}>{connectWithMeData.text}</p>
+              <div className={`redirect-buttons ${styles.connectButtonsStyle}`}>
+                <ButtonStyle text='Email' className='email-redirect-button' redirectLink={`mailto:${siteData.email}`} variant='primary' />
+                <ButtonStyle text='Call' className='call-redirect-button' redirectLink={`tel:${siteData.phoneTel}`} />
+                <ButtonStyle text='Resume' className='resume-redirect-button' redirectLink={siteData.resume} />
+              </div>
+              <a className={styles.connectEmailStyle} href={`mailto:${siteData.email}`}>{siteData.email}</a>
+            </div>
+          </section>
+
+          <footer className='font-mono text-[0.7rem] text-slate-500'>
             Designed &amp; built by {siteData.name} with Next.js, Tailwind CSS, and Vercel.
           </footer>
         </main>

@@ -5,3 +5,5 @@ public/dist/bundle.js
 .next
 archive
 .DS_Store
+# TypeScript incremental build cache
+*.tsbuildinfo

@@ -27,6 +27,22 @@ export function ButtonStyle({ text, className, redirectLink, variant = 'ghost' }
   )
 };
 
+// Section Header
+type SectionHeaderProps = {
+  index: number;
+  title: string;
+};
+
+export function SectionHeader({ index, title }: SectionHeaderProps) {
+  return (
+    <div className={styles.sectionHeaderStyle}>
+      <span className={styles.sectionIndexStyle} aria-hidden>{String(index).padStart(2, '0')}</span>
+      <h2 className={styles.sectionTitleStyle}>{title}</h2>
+      <span className={styles.sectionRuleStyle} aria-hidden></span>
+    </div>
+  )
+};
+
 // Tech Stack
 type TechStackProps = {
   name: string;
@@ -36,6 +52,28 @@ export function TechStack({ name }: TechStackProps) {
   return (
     <div className={`tech-stack-${name} ${styles.techStackStyle}`}>
       {name}
+    </div>
+  )
+};
+
+// A row of tech pills. Past `limit`, the rest fold into a "+N" chip that still names them for screen readers and on hover.
+type TechStackListProps = {
+  names: string[];
+  limit?: number;
+};
+
+export function TechStackList({ names, limit = names.length }: TechStackListProps) {
+  const shown = names.slice(0, limit);
+  const folded = names.slice(limit);
+  return (
+    <div className={styles.techStackContainerStyle}>
+      {shown.map((techName) => <TechStack key={techName} name={techName} />)}
+      {folded.length > 0 && (
+        <div className={styles.techStackMoreStyle} title={folded.join(', ')}>
+          <span aria-hidden>+{folded.length}</span>
+          <span className='sr-only'>{folded.join(', ')}</span>
+        </div>
+      )}
     </div>
   )
 };

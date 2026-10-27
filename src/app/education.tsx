@@ -1,27 +1,22 @@
+// Data
+import { EducationInfo } from './data/educationData';
+
 // Styling
 import * as styles from './style/constantStyles';
 
 
-
 type EducationProps = {
-  educationInfo: {
-    time: string,
-    title: string,
-    name: string,
-    degree: string,
-    text: string
-  }
+  educationInfo: EducationInfo
 };
 
 export default function Education({ educationInfo }: EducationProps) {
   return (
-    <div className={`education ${styles.educationIndividualStyle}`}>
-      <div className={`timeline ${styles.educationTimelineStyle}`}>{educationInfo.time}</div>
-      <div className={`education-information ${styles.educationInformationStyle}`}>
-        <div className={`education-title-and-name ${styles.educationNamePositionStyle}`}>{educationInfo.title} | {educationInfo.name}</div>
-        <div className={`education-degree italic ${styles.educationNamePositionStyle}`}>{educationInfo.degree}</div>
-        <div className={`education-description`}>{educationInfo.text}</div>
-      </div>
+    <div className={`education ${styles.educationCardStyle}`}>
+      <div className={`timeline ${styles.educationTimeStyle}`}>{educationInfo.time.replace(' - ', ' – ')}</div>
+      <h3 className={`education-degree ${styles.educationDegreeStyle}`}>{educationInfo.degree}</h3>
+      {educationInfo.field && <div className={`education-field ${styles.educationFieldStyle}`}>{educationInfo.field}</div>}
+      <div className={`education-school ${styles.educationSchoolStyle}`}>{educationInfo.name}</div>
+      <p className={`education-description ${styles.educationTextStyle}`}>{educationInfo.text}</p>
     </div>
   )
 };

@@ -1,11 +1,4 @@
-export const connectWithMeData = [
-  {
-    text: `While my projects and professional experiences undoubtedly define a part of me, they only scratch the surface. I'm on a mission to change lives through technology & service.`
-  },
-  {
-    text: `If you share this mission, I invite you to reach out and connect. Let's collaborate on projects that hold the promise of making a real difference!`
-  },
-  {
-    text: `Don't hesitate to get in touch! I'm always thrilled to discuss not only my personal journey but anything. Whether you're interested in delving into the details of my resume, exploring my LinkedIn profile, or diving into the nitty-gritty of my projects on GitHub, I'm here!`
-  },
-];
+export const connectWithMeData = {
+  heading: `Let's build something that matters.`,
+  text: `My projects and experience only scratch the surface. I'm on a mission to change lives through technology & service, so if you share it, reach out. Whether it's a role, a project, or the nitty-gritty of something I've built, I'm always happy to talk.`,
+};

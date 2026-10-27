@@ -1,5 +1,5 @@
 // Components
-import { TechStack, StatusBadge } from './reuseableComponents/reuseableComponents';
+import { StatusBadge } from './reuseableComponents/reuseableComponents';
 
 // Data
 import { ProjectInfo } from './data/projectData';
@@ -19,33 +19,45 @@ export default function ProjectArchive({ projects }: ProjectArchiveProps) {
   // Newest first; projects from the same year keep their listed order
   const sortedProjects = [ ...projects ].sort((a, b) => Number(b.year) - Number(a.year));
 
+  // One row; a project with a link makes the whole row the link
+  const row = (project: ProjectInfo) => (
+    <>
+      <span className={styles.archiveYearStyle}>{project.year}</span>
+      <div className='min-w-0'>
+        <div className={styles.archiveNameStyle}>{project.name}</div>
+        <p className={styles.archiveSummaryStyle}>{project.summary}</p>
+        <p className={styles.archiveStackStyle}>{project.techStack.join(' · ')}</p>
+      </div>
+      <div className='flex justify-end'>
+        {project.href ? (
+          <span className={styles.archiveLinkStyle}>
+            {project.href.includes('github.com') ? 'Code' : 'Visit'}
+            <NorthEastIcon className='transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5' style={{ fontSize: '0.9rem' }} />
+          </span>
+        ) : (
+          <StatusBadge status={project.status} />
+        )}
+      </div>
+    </>
+  );
+
   return (
     <div className='project-archive'>
-      <h3 className={styles.archiveTitleStyle}>More projects</h3>
-      <div className='mt-2 border-t border-white/[0.06]'>
-        {sortedProjects.map((project) => (
-          <div key={project.name} className={`archive-row ${styles.archiveRowStyle}`}>
-            <span className={styles.archiveYearStyle}>{project.year}</span>
-            <div className='min-w-0'>
-              <div className={styles.archiveNameStyle}>{project.name}</div>
-              <div className={styles.archiveSummaryStyle}>{project.summary}</div>
-            </div>
-            <div className={styles.archiveStackStyle}>
-              {project.techStack.map((techName) => <TechStack key={techName} name={techName} />)}
-            </div>
-            <div className='col-start-3 row-start-1 flex justify-end md:col-start-4'>
-              {project.href ? (
-                <a className={styles.archiveLinkStyle} href={project.href} target='_blank' rel='noopener noreferrer' aria-label={`Open ${project.name}`}>
-                  {project.href.includes('github.com') ? 'Code' : 'Visit'}
-                  <NorthEastIcon style={{ fontSize: '0.9rem' }} />
-                </a>
-              ) : (
-                <StatusBadge status={project.status} />
-              )}
-            </div>
-          </div>
-        ))}
+      <div className={styles.archiveHeaderStyle}>
+        <h3 className={styles.archiveTitleStyle}>More projects</h3>
+        <span className={styles.archiveCountStyle}>{projects.length} more</span>
       </div>
+      <ul>
+        {sortedProjects.map((project) => (
+          <li key={project.name} className={styles.archiveItemStyle}>
+            {project.href ? (
+              <a className={`archive-row ${styles.archiveRowStyle}`} href={project.href} target='_blank' rel='noopener noreferrer'>{row(project)}</a>
+            ) : (
+              <div className={`archive-row ${styles.archiveRowStyle}`}>{row(project)}</div>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 };
