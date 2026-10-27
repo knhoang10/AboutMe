@@ -1,0 +1,20 @@
+# Run with `docker compose up --build`, then open http://localhost:3100
+# Host port 3100 -> container port 3000 (3000 on the host is taken by real-estate-marketing).
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3100:3000"
+    volumes:
+      - .:/app
+      # Keep the container's own node_modules and build cache instead of the host's macOS ones
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      # File events from macOS bind mounts are unreliable, so poll for changes
+      - WATCHPACK_POLLING=true
+    stdin_open: true
+    tty: true
