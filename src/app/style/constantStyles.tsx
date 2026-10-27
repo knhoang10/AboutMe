@@ -15,29 +15,45 @@ export const flexRowSpaceBetweenDiv = `flex flex-row ${spaceBetweenDiv}`;
 // Specific styling -----------------------------------
 // Entire app
 export const pageStyle = `isolate min-h-screen`;
-export const appStyle = `lg:flex lg:flex-row lg:mx-auto lg:min-h-screen lg:max-w-screen-xl lg:px-24`;
+// Hero and sections share one centered column
+export const containerStyle = `mx-auto w-full max-w-5xl px-6`;
+export const mainStyle = `${containerStyle} flex flex-col gap-28 pb-14 pt-10`;
 
-// Left Section
-export const leftSectionStyle = `basis-1/3 lg:sticky justify-between max-h-screen top-0 lg:py-14 ${flexColSpaceBetweenDiv} ${padding}`;
-export const introductionStyle = `flex flex-col gap-3 lg:items-start items-center lg:text-left text-center`;
-export const headshotRingStyle = `photo-ring rounded-full p-[3px]`;
-export const headshotStyle = `rounded-full bg-light-black`;
-export const nameStyle = `font-display text-5xl font-extrabold tracking-tight text-gradient-name`;
-export const jobPositionStyle = `font-display text-xl font-medium text-slate-100`;
-export const mottoStyle = `text-sm text-slate-400`;
-export const availabilityStyle = `mt-1 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1 text-xs font-medium text-emerald-200`;
-export const socialMediaSectionStyle = `${flexRowSpaceBetweenDiv} lg:justify-start justify-center `
-export const iconStyle = `transition ease-in-out hover:text-white hover:-translate-1 hover:scale-125`;
+// Navigation (a sticky command bar)
+export const navBarStyle = `sticky top-0 z-40 border-b border-transparent transition-colors duration-300`;
+export const navBarScrolledStyle = `border-white/[0.07] bg-light-black/80 backdrop-blur-md`;
+export const navInnerStyle = `${containerStyle} relative flex h-16 items-center justify-between gap-6`;
+export const navLogoStyle = `font-mono text-sm font-medium text-slate-100 transition-colors hover:text-white`;
+// One list: a drop-down panel below lg, an inline row from lg up
+export const navListStyle = `absolute inset-x-0 top-full flex-col gap-1 border-b border-white/[0.07] bg-light-black px-6 py-4 lg:static lg:flex lg:flex-row lg:items-center lg:gap-7 lg:border-0 lg:bg-transparent lg:p-0`;
+export const navLinkStyle = `flex items-center gap-1.5 py-2 font-mono text-xs uppercase tracking-[0.14em] text-slate-400 transition-colors hover:text-white lg:py-0`;
+export const navLinkActiveStyle = `text-white`;
+export const navPromptStyle = `text-gold opacity-0 transition-opacity group-hover:opacity-100`;
+export const navResumeStyle = `hidden items-center gap-1 rounded-full border border-white/[0.15] px-3.5 py-1.5 font-mono text-xs text-slate-200 transition-colors hover:border-gold/60 hover:text-white sm:inline-flex`;
+export const navMenuButtonStyle = `inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.15] text-slate-200 transition-colors hover:border-gold/60 hover:text-white lg:hidden`;
+export const navProgressStyle = `absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-blue-400 to-gold`;
 
-// Right Section
-export const rightSectionStyle = `basis-2/3 min-w-0 flex flex-col gap-28 py-14 px-6 lg:px-0`;
+// Hero
+export const heroStyle = `${containerStyle} flex flex-col justify-center gap-14 pb-16 pt-10 lg:min-h-[calc(100svh-4rem)] lg:pt-6`;
+export const heroGridStyle = `flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16`;
+export const heroTextStyle = `flex max-w-2xl flex-col items-start gap-5`;
+export const availabilityStyle = `inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1 text-xs font-medium text-emerald-200`;
+export const nameStyle = `font-display text-5xl font-extrabold tracking-tight text-gradient-name sm:text-7xl`;
+export const jobPositionStyle = `-mt-2 font-display text-xl font-medium text-slate-100 sm:text-2xl`;
+export const heroPromptStyle = `font-mono text-sm text-blue-200 sm:text-base`;
+export const heroIntroStyle = `max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg`;
+export const heroActionsStyle = `mt-2 flex flex-wrap items-center gap-3`;
+export const heroPhotoStyle = `order-first shrink-0 lg:order-none`;
+export const headshotRingStyle = `photo-ring w-fit rounded-full p-[3px]`;
+export const headshotStyle = `h-36 w-36 rounded-full bg-light-black sm:h-44 sm:w-44 lg:h-72 lg:w-72`;
+export const socialMediaSectionStyle = `ml-1 flex items-center gap-4`;
+export const iconStyle = `text-slate-400 transition ease-in-out hover:-translate-y-0.5 hover:text-white`;
 
-// Every section: a numbered header, then its content. scroll-mt leaves room above the header when the nav scrolls to it.
-export const sectionStyle = `flex flex-col gap-8 scroll-mt-14`;
-export const sectionHeaderStyle = `reveal flex items-baseline gap-4`;
-export const sectionIndexStyle = `font-mono text-base font-medium text-gold`;
-export const sectionTitleStyle = `font-display text-2xl font-bold tracking-tight text-white sm:text-3xl`;
-export const sectionRuleStyle = `ml-2 h-px flex-1 self-center bg-gradient-to-r from-white/20 to-transparent`;
+// Every section: a header, then its content. scroll-mt keeps the header clear of the sticky bar.
+export const sectionStyle = `flex flex-col gap-8 scroll-mt-24`;
+export const sectionHeaderStyle = `reveal flex items-center gap-5`;
+export const sectionTitleStyle = `font-display text-2xl font-bold uppercase tracking-[0.12em] text-white sm:text-3xl`;
+export const sectionRuleStyle = `h-px flex-1 bg-gradient-to-r from-gold/50 via-white/10 to-transparent`;
 
 // Shared text
 export const bodyTextStyle = `leading-relaxed text-slate-400`;
@@ -45,15 +61,25 @@ export const monoLabelStyle = `font-mono text-xs uppercase tracking-[0.14em] tex
 
 
 // About -----------------------------------
+export const aboutGridStyle = `grid gap-10 lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-12`;
 export const aboutLeadStyle = `reveal text-lg leading-relaxed text-slate-200 sm:text-xl`;
 export const aboutTextStyle = `reveal ${bodyTextStyle}`;
 
+// Terminal window
+export const terminalStyle = `overflow-hidden rounded-xl border border-white/10 bg-[#0d1217]/90 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)]`;
+export const terminalBarStyle = `relative flex items-center border-b border-white/[0.07] bg-white/[0.03] px-4 py-2.5`;
+export const terminalTitleStyle = `absolute inset-x-0 text-center font-mono text-[0.7rem] text-slate-500`;
+export const terminalBodyStyle = `flex flex-col gap-4 p-5 font-mono text-[0.8rem] leading-6`;
+export const terminalPromptStyle = `text-gold`;
+export const terminalCommandStyle = `text-slate-100`;
+export const terminalOutputStyle = `text-slate-400`;
+
 // Stats: one strip split by hairlines instead of three boxes
-export const statsGridStyle = `reveal grid grid-cols-3 divide-x divide-white/10 border-y border-white/10`;
-export const statCardStyle = `flex flex-col items-center gap-2 px-2 py-6 text-center sm:items-start sm:px-6 sm:text-left sm:first:pl-0`;
+export const statsGridStyle = `grid grid-cols-3 divide-x divide-white/10 border-y border-white/10`;
+export const statCardStyle = `flex flex-col items-center gap-2 px-2 py-6 text-center sm:items-start sm:px-8 sm:text-left sm:first:pl-0`;
 export const statValueStyle = `font-display text-4xl font-bold tracking-tight text-gradient sm:text-5xl`;
 export const statLabelStyle = `font-mono text-[0.68rem] uppercase tracking-[0.14em] text-slate-400`;
-export const marqueeStyle = `py-1 text-sm font-medium text-slate-300`;
+export const marqueeStyle = `py-1 font-mono text-[0.8rem] text-slate-300`;
 
 
 // Projects -----------------------------------
@@ -93,7 +119,7 @@ export const archiveLinkStyle = `inline-flex items-center gap-1 pt-0.5 text-sm f
 
 
 // Experience timeline -----------------------------------
-export const timelineStyle = `flex flex-col`;
+export const timelineStyle = `flex max-w-3xl flex-col`;
 // The rail is each entry's left border, so it runs unbroken and stops at the last entry.
 // From sm up the dates move out to a column left of the rail.
 export const timelineItemStyle = `reveal relative border-l border-white/10 pb-12 pl-8 last:pb-0 sm:ml-[10.5rem]`;

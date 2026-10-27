@@ -5,6 +5,10 @@ export const siteData = {
   name: 'Kevin Hoang',
   jobTitle: 'Software Engineer',
   motto: 'Changing Lives Through Technology & Service',
+  // First-person line under the name in the hero
+  intro: 'Full-stack engineer building production web apps, automation, and data tools with TypeScript, React, Next.js, Python, and PostgreSQL.',
+  // Shown in the hero and the About terminal. Set to '' to hide it everywhere.
+  availability: 'Open to new opportunities',
   description: 'Kevin Hoang is a full-stack software engineer building production web apps, automation, and data tools with TypeScript, React, Next.js, Python, and PostgreSQL.',
   email: 'knhoang10@gmail.com',
   phoneDisplay: '(860) 682-2251',
